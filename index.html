@@ -1,1 +1,186 @@
-hola mundo
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patricio Javier Moya Antón | Solution Architect & ServiceNow Tera Expert</title>
+  <script src="https://tailwindcss.com"></script>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              850: '#151e2e',
+              900: '#0f172a',
+              950: '#080d1a',
+            },
+            teal: {
+              450: '#14b8a6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-bold text-lg tracking-tight text-white">
+        PJMA<span class="text-teal-400">.dev</span>
+      </a>
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+        <a href="#about" class="hover:text-teal-400 transition">About</a>
+        <a href="#capabilities" class="hover:text-teal-400 transition">Capabilities</a>
+        <a href="#experience" class="hover:text-teal-400 transition">Experience</a>
+        <a href="#stack" class="hover:text-teal-400 transition">Tech Stack</a>
+        <a href="#credentials" class="hover:text-teal-400 transition">Credentials</a>
+      </nav>
+      <a href="mailto:patricio.moya.anton@gmail.com" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-teal-500/10 text-teal-400 border border-teal-500/30 rounded-lg hover:bg-teal-500 hover:text-slate-950 transition">
+        Contact
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
+    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold tracking-widest uppercase mb-6">
+      <span>Architecture</span>
+      <span>•</span>
+      <span>ServiceNow</span>
+      <span>•</span>
+      <span>Full Stack</span>
+      <span>•</span>
+      <span>AI</span>
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
+      Patricio Javier Moya Antón
+    </h1>
+    <p class="text-xl md:text-2xl text-teal-400 font-medium mb-6">
+      Solution Architect | Senior Full Stack Consultant | ServiceNow Tera Expert
+    </p>
+
+    <p class="text-slate-400 max-w-3xl text-base md:text-lg leading-relaxed mb-8">
+      Solutions architect and senior consultant with more than 15 years building, integrating, and modernizing enterprise platforms across mining, banking, healthcare, telecommunications, transport, and financial services. Combining ServiceNow architecture with full-stack engineering, automation, data governance, UX, and artificial intelligence.
+    </p>
+
+    <div class="p-6 rounded-xl bg-gradient-to-r from-slate-900 to-slate-900/50 border-l-4 border-teal-400 max-w-3xl mb-10">
+      <p class="text-slate-200 font-medium italic">
+        "My profile combines deep technical development skills, architectural vision, operational judgment and the ability to turn complex processes into simple, auditable and scalable experiences."
+      </p>
+    </div>
+
+    <!-- Contact Bar -->
+    <div class="flex flex-wrap gap-4 text-sm text-slate-300 mb-14">
+      <span class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
+        📍 Santiago, Chile
+      </span>
+      <a href="mailto:patricio.moya.anton@gmail.com" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
+        ✉️ patricio.moya.anton@gmail.com
+      </a>
+      <a href="tel:+56952063997" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
+        📱 +56 9 5206 3997
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
+        🔗 ://linkedin.com
+      </a>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+        <div class="text-3xl font-bold text-teal-400 mb-1">15+</div>
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Years of Experience</div>
+      </div>
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+        <div class="text-3xl font-bold text-teal-400 mb-1">Tera</div>
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tera Expert ServiceNow</div>
+      </div>
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+        <div class="text-3xl font-bold text-teal-400 mb-1">Full</div>
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Full Stack End-to-End</div>
+      </div>
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+        <div class="text-3xl font-bold text-teal-400 mb-1">TI + OT</div>
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Business Vision</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects & Capabilities -->
+  <section id="capabilities" class="py-20 px-6 bg-slate-900/40 border-y border-slate-800/60">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Featured Projects & Capabilities</h2>
+      <p class="text-slate-400 mb-10">Core architectural domains and enterprise solutions delivered.</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">ServiceNow Enterprise Architecture</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            CSDM, CMDB, ITAM, ITOM, ITSM, catalogs, portals, automation, analytics, security and operational governance.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">Integration & Automation</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            REST/SOAP, SCCM, Nagios, Altiris, SAP, Azure, AD, Power BI, chatbots, integrations across instances and legacy systems.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">Full Stack Architecture</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Angular/TypeScript, Flutter, Java/Spring Boot, C#/.NET, Python, SQL and end-to-end enterprise product design.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">Data & Financial Systems</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            XBRL, XML, IFRS, GAAP, taxonomies, Oracle, SQL Server, parallel processing, reporting and regulatory traceability.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">User Experience</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Responsive portals, accessibility, corporate branding, notifications, visual guides, ES/EN localization and process simplification.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
+          <h3 class="text-lg font-semibold text-teal-400 mb-2">Technical Leadership</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Root cause diagnosis, standards design, mentoring, multidisciplinary coordination and executive communication oriented to decision making.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience -->
+  <section id="experience" class="py-20 px-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Professional Experience</h2>
+    <p class="text-slate-400 mb-12">Track record leading architecture, governance, and development across major enterprises.</p>
+
+    <div class="space-y-10 border-l-2 border-slate-800 ml-3 pl-8 relative">
+
+      <!-- SQM -->
+      <div class="relative">
+        <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-teal-400 ring-4 ring-slate-950"></span>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-400">SQM • Transformation & Technology Management</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/30 font-medium">Current Experience</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Solutions Architect & Senior ServiceNow Consultant</h3>
