@@ -1,13 +1,13 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patricio Javier Moya Antón - Senior Full Stack Consultant</title>
+    <title>Patricio Javier Moya Antón - Arquitecto de Soluciones | Consultor Senior ServiceNow & Full Stack</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts (Orbitron for futuristic titles, Rajdhani for technical text) -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* === VARIABLES & GENERAL STYLE === */
@@ -17,7 +17,7 @@
             --electric-blue: #2d6cdf;
             --deep-space: #050b14;
             --starlight: #e0f7ff;
-            --glass-bg: rgba(10, 15, 30, 0.85);
+            --glass-bg: rgba(10, 15, 30, 0.88);
         }
 
         body {
@@ -25,7 +25,8 @@
             background-image: 
                 radial-gradient(circle at 50% 0%, #2d1b4e 0%, transparent 50%),
                 radial-gradient(circle at 0% 50%, #0d2345 0%, transparent 50%),
-                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDAwIiAvPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiIC8+PC9zdmc+'); 
+                radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 24px 24px;
             color: var(--starlight);
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
@@ -34,33 +35,24 @@
         /* === TYPOGRAPHY === */
         h1, h2, h3, .font-sci-fi {
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        /* === UTILS === */
+        /* === GLASS PANEL & CONTAINERS === */
         .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(188, 19, 254, 0.3);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(188, 19, 254, 0.35);
             box-shadow: 
-                0 0 30px rgba(0, 243, 255, 0.1),
-                inset 0 0 20px rgba(188, 19, 254, 0.1);
+                0 0 35px rgba(0, 243, 255, 0.12),
+                inset 0 0 25px rgba(188, 19, 254, 0.1);
             position: relative;
             overflow: hidden;
         }
 
         /* Skeleton Loading Effect */
-        .skeleton {
-            background: linear-gradient(90deg, 
-                rgba(45, 27, 78, 0.1) 25%, 
-                rgba(45, 107, 223, 0.2) 50%, 
-                rgba(45, 27, 78, 0.1) 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            border-radius: 4px;
-        }
-
         .skeleton-text {
             color: transparent !important;
             position: relative;
@@ -70,16 +62,16 @@
         .skeleton-text::after {
             content: '';
             position: absolute;
-            top: 0;
+            top: 2px;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100% - 4px);
             background: linear-gradient(90deg, 
-                rgba(45, 27, 78, 0.1) 25%, 
-                rgba(45, 107, 223, 0.2) 50%, 
-                rgba(45, 27, 78, 0.1) 75%);
+                rgba(45, 27, 78, 0.15) 25%, 
+                rgba(0, 243, 255, 0.22) 50%, 
+                rgba(45, 27, 78, 0.15) 75%);
             background-size: 200% 100%;
-            animation: loading 1.5s infinite;
+            animation: loading 1.4s infinite;
             border-radius: 4px;
         }
 
@@ -88,15 +80,25 @@
             100% { background-position: -200% 0; }
         }
 
+        /* Language Switch Fade Transition */
+        .lang-fade {
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        .lang-switching {
+            opacity: 0.25;
+            transform: translateY(2px);
+        }
+
         /* Electric Corners */
         .electric-corner {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border: 2px solid var(--electric-cyan);
-            box-shadow: 0 0 10px var(--electric-cyan);
+            box-shadow: 0 0 12px var(--electric-cyan);
             transition: all 0.3s ease;
             z-index: 20;
+            pointer-events: none;
         }
         .top-left { top: 0; left: 0; border-right: none; border-bottom: none; }
         .top-right { top: 0; right: 0; border-left: none; border-bottom: none; }
@@ -106,75 +108,94 @@
         /* Text Effects */
         .text-electric-cyan {
             color: var(--electric-cyan);
-            text-shadow: 0 0 8px rgba(0, 243, 255, 0.8);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.75);
         }
         
         .text-electric-purple {
             color: var(--electric-purple);
-            text-shadow: 0 0 8px rgba(188, 19, 254, 0.8);
+            text-shadow: 0 0 8px rgba(188, 19, 254, 0.75);
         }
 
         /* Section Divider - Energy Beam */
         .energy-beam {
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--electric-purple), var(--electric-cyan), transparent);
-            margin: 2rem 0;
+            margin: 2.25rem 0;
             position: relative;
             box-shadow: 0 0 10px var(--electric-cyan);
         }
 
         /* Tech Tags / Runes */
         .tech-rune {
-            background: rgba(0, 243, 255, 0.05);
-            border: 1px solid var(--electric-cyan);
+            background: rgba(0, 243, 255, 0.06);
+            border: 1px solid rgba(0, 243, 255, 0.65);
             color: var(--electric-cyan);
-            padding: 0.3rem 0.9rem;
-            font-size: 0.8rem;
+            padding: 0.28rem 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             display: inline-block;
-            transform: skewX(-15deg);
-            transition: all 0.3s;
-            box-shadow: 0 0 5px rgba(0, 243, 255, 0.2);
+            transform: skewX(-14deg);
+            transition: all 0.25s ease;
+            box-shadow: 0 0 6px rgba(0, 243, 255, 0.15);
+            border-radius: 4px;
         }
         .tech-rune span {
             display: inline-block;
-            transform: skewX(15deg);
+            transform: skewX(14deg);
         }
         .tech-rune:hover {
-            background: rgba(0, 243, 255, 0.2);
+            background: rgba(0, 243, 255, 0.22);
             box-shadow: 0 0 15px var(--electric-cyan);
-            text-shadow: 0 0 5px white;
-            transform: skewX(-15deg) translateY(-2px);
+            text-shadow: 0 0 6px #ffffff;
+            transform: skewX(-14deg) translateY(-2px);
         }
 
         /* Badges */
         .badge-galactic {
-            background: linear-gradient(90deg, rgba(45, 27, 78, 0.8), rgba(10, 15, 30, 0.8));
+            background: linear-gradient(90deg, rgba(45, 27, 78, 0.85), rgba(10, 15, 30, 0.85));
             border-left: 3px solid var(--electric-purple);
-            color: #d0d0d0;
-            padding: 5px 10px;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            margin-right: 4px;
-            margin-bottom: 4px;
+            color: #dce7f3;
+            padding: 6px 11px;
+            font-size: 0.78rem;
+            letter-spacing: 0.8px;
             display: inline-block;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
+            border-radius: 0 6px 6px 0;
         }
         .badge-galactic:hover {
             border-left-color: var(--electric-cyan);
-            color: white;
-            box-shadow: -5px 0 10px rgba(0, 243, 255, 0.2);
+            color: #ffffff;
+            box-shadow: -5px 0 12px rgba(0, 243, 255, 0.25);
+            transform: translateX(2px);
+        }
+
+        /* Language Switcher Button */
+        .lang-btn {
+            background: rgba(5, 11, 20, 0.9);
+            border: 1px solid rgba(0, 243, 255, 0.45);
+            color: #94a3b8;
+            transition: all 0.25s ease;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.22), rgba(188, 19, 254, 0.28));
+            border-color: var(--electric-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(0, 243, 255, 0.45);
+        }
+        .lang-btn:hover:not(.active) {
+            border-color: var(--electric-purple);
+            color: #e2e8f0;
         }
 
         /* Links */
-        a { transition: all 0.3s; }
+        a { transition: all 0.25s ease; }
         a:hover { color: var(--electric-cyan); text-shadow: 0 0 10px var(--electric-cyan); }
 
         /* List Styles */
         ul.galactic-list li {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
+            padding-left: 1.35rem;
+            margin-bottom: 0.45rem;
         }
         ul.galactic-list li::before {
             content: '>';
@@ -188,7 +209,7 @@
         /* Timeline Dot */
         .timeline-dot {
             position: absolute;
-            left: -6px;
+            left: -6.5px;
             top: 6px;
             width: 12px;
             height: 12px;
@@ -197,285 +218,420 @@
             box-shadow: 0 0 10px var(--electric-cyan);
             border-radius: 50%;
         }
+        .timeline-dot.current {
+            background: var(--electric-cyan);
+            box-shadow: 0 0 16px var(--electric-cyan), 0 0 24px var(--electric-purple);
+        }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .cv-layout { flex-direction: column; }
-            .sidebar-col { width: 100%; border-right: none; border-bottom: 1px solid var(--electric-purple); }
-            .main-col { width: 100%; }
+        /* Toast Notification */
+        .cyber-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(5, 11, 20, 0.96);
+            border: 1px solid var(--electric-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.35);
+            color: var(--starlight);
+            padding: 10px 18px;
+            border-radius: 8px;
+            z-index: 100;
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .cyber-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: #050b14 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .cv-layout {
+                margin: 0 !important;
+                max-width: 100% !important;
+                box-shadow: none !important;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen p-4 lg:p-8 flex justify-center items-start">
+<body class="min-h-screen p-3 sm:p-5 lg:p-8 flex flex-col items-center">
+
+    <!-- Top Control Bar (Language Flag Switcher + Actions) -->
+    <div class="no-print max-w-6xl w-full flex flex-wrap justify-between items-center gap-3 mb-3 px-1 z-30">
+        <div class="flex items-center gap-2 text-xs font-sci-fi tracking-widest text-gray-400">
+            <span class="inline-block w-2 h-2 rounded-full bg-[var(--electric-cyan)] animate-ping"></span>
+            <span data-i18n="system_status">SISTEMA ACTIVO // DOSSIER BILINGÜE</span>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+            <!-- Bilingual Flag Selector -->
+            <div class="inline-flex items-center p-1 rounded-xl bg-[rgba(5,11,20,0.92)] border border-[rgba(188,19,254,0.45)] shadow-[0_0_20px_rgba(0,243,255,0.15)]" role="group" aria-label="Selector de Idioma / Language Selector">
+                <button id="btn-es" onclick="setLanguage('es')" class="lang-btn active px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-2 cursor-pointer" title="Cambiar a Español">
+                    <span class="text-base leading-none" role="img" aria-label="Bandera de España / Español">🇪🇸</span>
+                    <span class="font-sci-fi tracking-wider">ES</span>
+                </button>
+                <button id="btn-en" onclick="setLanguage('en')" class="lang-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-2 cursor-pointer" title="Switch to English">
+                    <span class="text-base leading-none" role="img" aria-label="US/UK Flag / English">🇺🇸</span>
+                    <span class="font-sci-fi tracking-wider">EN</span>
+                </button>
+            </div>
+
+            <!-- Print / PDF Export Button -->
+            <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-[rgba(10,15,30,0.9)] border border-[rgba(0,243,255,0.4)] hover:border-[var(--electric-cyan)] hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] text-electric-cyan text-xs font-sci-fi tracking-wider flex items-center gap-2 cursor-pointer transition-all" title="Imprimir / Guardar PDF">
+                <span>🖨️</span>
+                <span class="hidden sm:inline" data-i18n="btn_print">PDF / IMPRIMIR</span>
+            </button>
+        </div>
+    </div>
 
     <!-- Main Frame -->
-    <div class="cv-layout max-w-6xl w-full glass-panel flex flex-col md:flex-row mt-4 mb-10 relative">
+    <div id="cv-root" class="cv-layout max-w-6xl w-full glass-panel rounded-2xl flex flex-col md:flex-row mb-10 relative lang-fade">
         
         <!-- Electric Corners -->
-        <div class="electric-corner top-left"></div>
-        <div class="electric-corner top-right"></div>
-        <div class="electric-corner bottom-left"></div>
-        <div class="electric-corner bottom-right"></div>
+        <div class="electric-corner top-left rounded-tl-2xl"></div>
+        <div class="electric-corner top-right rounded-tr-2xl"></div>
+        <div class="electric-corner bottom-left rounded-bl-2xl"></div>
+        <div class="electric-corner bottom-right rounded-br-2xl"></div>
 
         <!-- === SIDEBAR (LEFT - DARK) === -->
-        <aside class="sidebar-col w-full md:w-1/3 p-8 border-r border-[rgba(188,19,254,0.3)] bg-[rgba(5,11,20,0.9)] relative z-10">
+        <aside class="sidebar-col w-full md:w-[35%] p-6 sm:p-8 border-b md:border-b-0 md:border-r border-[rgba(188,19,254,0.35)] bg-[rgba(5,11,20,0.92)] relative z-10">
             
             <!-- Profile Header -->
-            <div class="text-center md:text-left mb-10 relative">
-                <!-- Photo / Avatar Placeholder -->
-                <div class="inline-block mb-6 p-1 border-2 border-dashed border-[var(--electric-purple)] rounded-full relative">
+            <div class="text-center md:text-left mb-9 relative">
+                <!-- Avatar Emblem -->
+                <div class="inline-block mb-5 p-1.5 border-2 border-dashed border-[var(--electric-purple)] rounded-full relative">
                     <div class="absolute inset-0 rounded-full animate-pulse bg-[rgba(188,19,254,0.2)]"></div>
-                    <div class="w-24 h-24 rounded-full bg-gradient-to-b from-gray-900 to-black flex items-center justify-center mx-auto relative z-10 border border-[var(--electric-cyan)]">
-                        <span class="text-4xl text-white font-sci-fi">P</span> 
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center mx-auto relative z-10 border border-[var(--electric-cyan)] shadow-[0_0_20px_rgba(0,243,255,0.25)]">
+                        <span class="text-3xl font-black text-white font-sci-fi tracking-tighter">PJ</span>
+                        <span class="text-[9px] text-electric-cyan font-sci-fi tracking-widest mt-0.5">MA</span>
                     </div>
                 </div>
 
-                <h1 class="text-4xl font-bold text-electric-cyan leading-none mb-2 tracking-tighter">Patricio Javier<br><span class="text-white text-2xl">Moya Antón</span></h1>
-                <h2 class="text-sm tracking-[0.2em] text-electric-purple uppercase mb-4 font-bold">Senior Full Stack Consultant</h2>
+                <h1 class="text-3xl sm:text-4xl font-bold text-electric-cyan leading-tight mb-2 tracking-tight">
+                    Patricio Javier<br><span class="text-white text-2xl sm:text-[26px]">Moya Antón</span>
+                </h1>
+                <h2 class="text-xs sm:text-sm tracking-[0.16em] text-electric-purple uppercase mb-5 font-bold leading-snug" data-i18n="role_headline">
+                    Arquitecto de Soluciones | Consultor Senior ServiceNow & Full Stack
+                </h2>
                 
                 <!-- Tera Contributor Badge -->
-                <div class="inline-block bg-gradient-to-r from-[rgba(0,243,255,0.1)] to-transparent border-l-4 border-[var(--electric-cyan)] pl-3 py-2 pr-4">
-                    <h3 class="text-xl font-bold text-white font-sci-fi shadow-cyan">TERA EXPERT</h3>
-                    <p class="text-xs text-electric-cyan tracking-widest uppercase">ServiceNow Elite Unit</p>
+                <div class="inline-block w-full sm:w-auto bg-gradient-to-r from-[rgba(0,243,255,0.14)] to-[rgba(188,19,254,0.08)] border-l-4 border-[var(--electric-cyan)] pl-3.5 py-2.5 pr-4 rounded-r-lg">
+                    <h3 class="text-lg font-bold text-white font-sci-fi">TERA EXPERT</h3>
+                    <p class="text-xs text-electric-cyan tracking-widest uppercase" data-i18n="tera_sub">Unidad Élite ServiceNow</p>
                 </div>
             </div>
 
-            <!-- Contact -->
-            <section class="mb-12">
-                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Data Link</h3>
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex items-center group cursor-pointer">
-                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">⚡</span>
-                        <span class="group-hover:text-white transition-colors">+56952063997</span>
+            <!-- Contact / Data Link -->
+            <section class="mb-9">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest" data-i18n="sec_contact">Enlace de Datos</h3>
+                <ul class="space-y-3.5 text-sm text-gray-300">
+                    <li class="flex items-center">
+                        <span class="text-lg mr-3 text-electric-cyan">📍</span>
+                        <span>Santiago, Chile</span>
                     </li>
-                    <li class="flex items-center group cursor-pointer">
-                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">@</span>
-                        <span class="group-hover:text-white transition-colors">patricio.moya.anton@gmail.com</span>
+                    <li class="flex items-center group cursor-pointer" onclick="copyText('+56 9 5206 3997')">
+                        <span class="text-lg mr-3 text-electric-cyan group-hover:scale-110 transition-transform">⚡</span>
+                        <span class="group-hover:text-white transition-colors">+56 9 5206 3997</span>
+                    </li>
+                    <li class="flex items-center group cursor-pointer" onclick="copyText('patricio.moya.anton@gmail.com')">
+                        <span class="text-lg mr-3 text-electric-cyan group-hover:scale-110 transition-transform font-bold">@</span>
+                        <span class="group-hover:text-white transition-colors break-all">patricio.moya.anton@gmail.com</span>
                     </li>
                     <li class="flex items-center group">
-                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">🔗</span>
-                        <a href="https://www.linkedin.com/in/pjma" target="_blank" class="group-hover:text-white transition-colors">LinkedIn / pjma</a>
+                        <span class="text-lg mr-3 text-electric-cyan group-hover:scale-110 transition-transform">🔗</span>
+                        <a href="https://www.linkedin.com/in/pjma" target="_blank" rel="noopener noreferrer" class="group-hover:text-white transition-colors">linkedin.com/in/pjma</a>
                     </li>
                     <li class="flex items-center group">
-                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">★</span>
-                        <a href="https://account.servicenow.com/personal-data/11e980cc4/a8b88c6ad/b40a6cdff/a1f44KL6L/resume.html" target="_blank" class="group-hover:text-white transition-colors">ServiceNow Profile</a>
+                        <span class="text-lg mr-3 text-electric-cyan group-hover:scale-110 transition-transform">★</span>
+                        <a href="https://account.servicenow.com/personal-data/11e980cc4/a8b88c6ad/b40a6cdff/a1f44KL6L/resume.html" target="_blank" rel="noopener noreferrer" class="group-hover:text-white transition-colors" data-i18n="sn_profile">Perfil Oficial ServiceNow</a>
                     </li>
                 </ul>
             </section>
 
-            <!-- Skills -->
-            <section class="mb-12">
-                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Tech Arsenal</h3>
+            <!-- Tech Arsenal (Categorized from ATS CV + Original) -->
+            <section class="mb-9">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest" data-i18n="sec_skills">Arsenal Tecnológico</h3>
                 
-                <div class="mb-6">
-                    <h4 class="text-white text-xs font-bold uppercase mb-3 tracking-wider opacity-70">Core Systems</h4>
-                    <div class="flex flex-wrap gap-3">
+                <!-- 1. ServiceNow Architecture -->
+                <div class="mb-5">
+                    <h4 class="text-white text-xs font-bold uppercase mb-2.5 tracking-wider opacity-80" data-i18n="skill_cat_sn">Arquitectura ServiceNow</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-rune"><span>CSDM 4.0</span></div>
                         <div class="tech-rune"><span>ServiceNow</span></div>
+                        <div class="tech-rune"><span>ITSM</span></div>
                         <div class="tech-rune"><span>ITOM</span></div>
+                        <div class="tech-rune"><span>ITAM</span></div>
                         <div class="tech-rune"><span>CMDB</span></div>
-                        <div class="tech-rune"><span>Angular</span></div>
-                        <div class="tech-rune"><span>TypeScript</span></div>
-                        <div class="tech-rune"><span>Java</span></div>
-                        <div class="tech-rune"><span>Spring Boot</span></div>
-                        <div class="tech-rune"><span>C# .NET</span></div>
-                        <div class="tech-rune"><span>Javascript</span></div>
-                        <div class="tech-rune"><span>Bash</span></div>
-                        <div class="tech-rune"><span>C++</span></div>
-                        <div class="tech-rune"><span>Python</span></div>
+                        <div class="tech-rune"><span>Service Catalog</span></div>
+                        <div class="tech-rune"><span>Flow Designer</span></div>
+                        <div class="tech-rune"><span>Discovery</span></div>
+                        <div class="tech-rune"><span>Agent Intelligence</span></div>
+                        <div class="tech-rune"><span>Domain Separation</span></div>
+                        <div class="tech-rune"><span>Script Includes</span></div>
+                        <div class="tech-rune"><span>Glide API</span></div>
                     </div>
                 </div>
 
-                <div class="mb-6">
-                    <h4 class="text-white text-xs font-bold uppercase mb-3 tracking-wider opacity-70">Data & Cloud</h4>
-                    <div class="flex flex-wrap gap-3">
+                <!-- 2. Frontend & Backend -->
+                <div class="mb-5">
+                    <h4 class="text-white text-xs font-bold uppercase mb-2.5 tracking-wider opacity-80" data-i18n="skill_cat_dev">Desarrollo Frontend & Backend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-rune"><span>Angular</span></div>
+                        <div class="tech-rune"><span>TypeScript</span></div>
+                        <div class="tech-rune"><span>JavaScript (ES6+)</span></div>
+                        <div class="tech-rune"><span>Java</span></div>
+                        <div class="tech-rune"><span>Spring Boot</span></div>
+                        <div class="tech-rune"><span>C# / .NET Core</span></div>
+                        <div class="tech-rune"><span>Python</span></div>
+                        <div class="tech-rune"><span>REST / SOAP APIs</span></div>
+                        <div class="tech-rune"><span data-i18n="skill_microservices">Microservicios</span></div>
+                        <div class="tech-rune"><span>HTML5 / CSS3</span></div>
+                        <div class="tech-rune"><span>C++</span></div>
+                        <div class="tech-rune"><span>Bash</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Databases, Cloud & Enterprise -->
+                <div class="mb-5">
+                    <h4 class="text-white text-xs font-bold uppercase mb-2.5 tracking-wider opacity-80" data-i18n="skill_cat_cloud">Bases de Datos, Cloud & Enterprise</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-rune"><span>SQL Server</span></div>
+                        <div class="tech-rune"><span>Oracle DB</span></div>
                         <div class="tech-rune"><span>PostgreSQL</span></div>
+                        <div class="tech-rune"><span>MySQL</span></div>
+                        <div class="tech-rune"><span>Azure Cloud</span></div>
+                        <div class="tech-rune"><span>GCP</span></div>
+                        <div class="tech-rune"><span>AWS</span></div>
                         <div class="tech-rune"><span>Firebase</span></div>
-                        <div class="tech-rune"><span>SQL</span></div>
-                        <div class="tech-rune"><span>MYSQL</span></div>
-                        <div class="tech-rune"><span>Oracle</span></div>
-                        <div class="tech-rune"><span>Azure</span></div>
-                        <div class="tech-rune"><span>SAP</span></div>
-                        <div class="tech-rune"><span>OpenAI</span></div>
+                        <div class="tech-rune"><span>SCCM</span></div>
+                        <div class="tech-rune"><span>Active Directory</span></div>
+                        <div class="tech-rune"><span>SAP Integration</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Methodologies & AI -->
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase mb-2.5 tracking-wider opacity-80" data-i18n="skill_cat_ai">Metodologías & Especialidades IA</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-rune"><span>Agile / Scrum</span></div>
+                        <div class="tech-rune"><span data-i18n="skill_gov">Gobierno de Datos</span></div>
+                        <div class="tech-rune"><span data-i18n="skill_ux">UI/UX Empresarial</span></div>
+                        <div class="tech-rune"><span data-i18n="skill_rpa">Automatización RPA/IA</span></div>
+                        <div class="tech-rune"><span>LLM / OpenAI API</span></div>
+                        <div class="tech-rune"><span>IFRS / XBRL</span></div>
                     </div>
                 </div>
             </section>
 
-            <!-- Education -->
-            <section class="mb-12">
-                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Academy</h3>
-                <div class="mb-4">
-                    <h4 class="text-white font-bold">Computer Engineering</h4>
-                    <p class="text-gray-400 text-sm">INACAP, Santiago</p>
-                    <p class="text-electric-cyan text-xs">2006 - 2012</p>
+            <!-- Academy / Education -->
+            <section class="mb-9">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest" data-i18n="sec_education">Academia</h3>
+                <div class="mb-4 p-3 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(0,243,255,0.15)]">
+                    <h4 class="text-white font-bold text-base" data-i18n="edu_1_title">Ingeniería en Informática</h4>
+                    <p class="text-gray-300 text-sm">INACAP, Santiago, Chile</p>
+                    <p class="text-electric-cyan text-xs font-mono mt-1">2006 - 2012</p>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold">Advanced Mathematics</h4>
-                    <p class="text-gray-400 text-sm">Pontificia Universidad Católica</p>
-                    <p class="text-electric-cyan text-xs">2002 (Scholarship)</p>
+                <div class="p-3 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(188,19,254,0.2)]">
+                    <h4 class="text-white font-bold text-base" data-i18n="edu_2_title">Matemáticas Avanzadas</h4>
+                    <p class="text-gray-300 text-sm">Pontificia Universidad Católica de Chile</p>
+                    <p class="text-electric-cyan text-xs font-mono mt-1" data-i18n="edu_2_date">2002 (Beca de Excelencia)</p>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section>
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest" data-i18n="sec_languages">Idiomas</h3>
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex justify-between items-center p-2.5 rounded-lg bg-[rgba(0,243,255,0.05)] border border-[rgba(0,243,255,0.2)]">
+                        <span class="font-bold text-white" data-i18n="lang_es_name">🇪🇸 Español</span>
+                        <span class="text-electric-cyan text-xs font-sci-fi" data-i18n="lang_es_level">Nativo</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded-lg bg-[rgba(188,19,254,0.05)] border border-[rgba(188,19,254,0.2)]">
+                        <span class="font-bold text-white" data-i18n="lang_en_name">🇺🇸 Inglés</span>
+                        <span class="text-electric-purple text-xs font-sci-fi" data-i18n="lang_en_level">Técnico Profesional</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2.5 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.1)]">
+                        <span class="font-bold text-white" data-i18n="lang_pt_name">🇧🇷 Portugués</span>
+                        <span class="text-gray-300 text-xs font-sci-fi" data-i18n="lang_pt_level">Funcional</span>
+                    </div>
                 </div>
             </section>
 
         </aside>
         
         <!-- === MAIN CONTENT (RIGHT) === -->
-        <main class="main-col w-full md:w-2/3 p-8 lg:p-12 relative z-10">
+        <main class="main-col w-full md:w-[65%] p-6 sm:p-8 lg:p-11 relative z-10">
             
-            <!-- Abstract -->
-            <section class="mb-12">
-                <h2 class="text-3xl text-electric-cyan mb-4 flex items-center">
-                    <span class="text-electric-purple mr-3 text-2xl">❖</span> Professional Profile
+            <!-- Professional Profile -->
+            <section class="mb-10">
+                <h2 class="text-2xl sm:text-3xl text-electric-cyan mb-4 flex items-center">
+                    <span class="text-electric-purple mr-3 text-2xl">❖</span> 
+                    <span data-i18n="sec_profile">Perfil Profesional</span>
                 </h2>
-                <div class="relative p-6 border border-[rgba(0,243,255,0.2)] bg-[rgba(0,0,0,0.3)] rounded-br-2xl">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--electric-cyan)] to-transparent opacity-50"></div>
+                <div class="relative p-5 sm:p-6 border border-[rgba(0,243,255,0.25)] bg-[rgba(0,0,0,0.35)] rounded-xl">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--electric-cyan)] to-transparent opacity-60 rounded-t-xl"></div>
                     
-                    <p class="text-gray-300 leading-relaxed text-lg font-light skeleton-text" id="profile-text">
-                        Senior Full Stack Consultant and ServiceNow Solution Architect with over 15 years of experience transforming IT ecosystems in critical sectors such as banking and mining. Recognized as a TERA EXPERT by the global ServiceNow community, I specialize in the design and implementation of advanced ITSM solutions (Incident, Problem, Change Management) and the creation of custom applications. My profile combines expert backend (Java, Spring Boot) and frontend (Angular) mastery with a proven ability to integrate complex platforms such as Azure, SAP, SCCM, and monitoring tools. Specialist in process automation using AI and architecture modernization, focused on continuous improvement and business operational efficiency.
+                    <p class="text-gray-200 leading-relaxed text-base sm:text-lg font-normal skeleton-text" id="profile-text" data-i18n="profile_summary">
+                        Arquitecto de Soluciones y Consultor Senior con más de 15 años de trayectoria liderando el diseño, integración y modernización de plataformas empresariales de alta complejidad en sectores de minería, banca, salud, telecomunicaciones y servicios financieros. Reconocido como TERA EXPERT por la comunidad global de ServiceNow, me especializo en ecosistemas ServiceNow (CSDM 4.0, ITSM, ITOM, ITAM, CMDB) e ingeniería de software Full Stack (Angular, Java Spring Boot, .NET, REST/SOAP APIs). Experto en automatización de procesos corporativos, gobierno de datos, integraciones multinivel (Azure, SAP, SCCM) e implementación de soluciones orientadas a la continuidad operativa, escalabilidad e Inteligencia Artificial empresarial.
                     </p>
                 </div>
             </section>
 
             <div class="energy-beam"></div>
 
-            <!-- Timeline -->
-            <section class="mb-12">
-                <h2 class="text-3xl text-electric-cyan mb-8">Mission Log</h2>
+            <!-- Mission Log / Professional Experience (All 9 Roles from CV) -->
+            <section class="mb-10">
+                <h2 class="text-2xl sm:text-3xl text-electric-cyan mb-8 flex items-center">
+                    <span class="text-electric-purple mr-3 text-2xl">⚡</span>
+                    <span data-i18n="sec_experience">Bitácora de Misiones</span>
+                </h2>
                 
-                <!-- Job 1 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">ServiceNow Consultant</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
-                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Lundin Mining (Feten Consulting)</span>
-                        <span class="text-electric-cyan text-xs font-mono border border-[var(--electric-cyan)] px-2 py-1 rounded bg-[rgba(0,243,255,0.1)]">Oct 2025</span>
+                <!-- JOB 1: SQM -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l-2 border-[rgba(0,243,255,0.45)]">
+                    <div class="timeline-dot current"></div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job1_title">Arquitecto de Soluciones & Consultor Senior ServiceNow</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">SQM - Gerencia de Transformación y Tecnología</span>
+                        <span class="text-electric-cyan text-xs font-mono border border-[var(--electric-cyan)] px-2.5 py-1 rounded-md bg-[rgba(0,243,255,0.12)] font-bold" data-i18n="job1_date">Actualidad (Desde 2024)</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-3 italic opacity-80">High-Level Consulting Demonstration</p>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>Implementation of data governance and advanced reporting</li>
-                        <li>Advanced scripting for SLAs and metric correction</li>
-                        <li>Advanced scripting for KPIs</li>
-                        <li>CMDB management: consolidation and loading of CIs</li>
-                        <li>Analysis and reporting of Lundin Mining intranet</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job1_b1"><strong>Arquitectura CSDM & Servicios:</strong> Lideré el diseño e implementación del Modelo de Servicios de Negocio y Ofertas de Servicio bajo CSDM 4.0, vinculando infraestructura crítica, aplicaciones, SLAs e incidentes para garantizar trazabilidad operativa y financiera.</li>
+                        <li data-i18n="job1_b2"><strong>Gobierno de Datos & Taxonomía:</strong> Normalicé catálogos de servicios masivos, definiendo taxonomías bilingües y estándares de nomenclatura preparados para analítica avanzada e integración con soluciones de IA.</li>
+                        <li data-i18n="job1_b3"><strong>CMDB & ITAM Enterprise:</strong> Implementé reglas de descubrimiento con Discovery y cargadores masivos para erradicar inconsistencias e inventariar Activos TI, reduciendo duplicidades en la CMDB.</li>
+                        <li data-i18n="job1_b4"><strong>Integraciones Empresariales:</strong> Diseñé e implementé conectores de datos bidireccionales vía APIs REST entre ServiceNow y plataformas corporativas como SCCM, Active Directory, Azure, SAP y Power BI.</li>
+                        <li data-i18n="job1_b5"><strong>Desarrollo Portal UX/UI & ITSM:</strong> Desarrollé portales Service Portal accesibles y adaptativos resguardando la compatibilidad Out-Of-The-Box (OOTB) para procesos de First Call Resolution (FCR) y auditorías.</li>
+                    </ul>
+                </div>
+
+                <!-- JOB 2: LUNDIN MINING -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job2_title">Consultor Senior ServiceNow</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Lundin Mining (Feten Consulting)</span>
+                        <span class="text-electric-cyan text-xs font-mono border border-[rgba(0,243,255,0.4)] px-2.5 py-0.5 rounded bg-[rgba(0,243,255,0.08)]" data-i18n="job2_date">Oct 2024 - Dic 2024</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job2_b1">Implementé la consolidación, carga y auditoría de Configuration Items (CIs) en la CMDB corporativa, optimizando el rendimiento de consultas y la calidad de datos.</li>
+                        <li data-i18n="job2_b2">Desarrollé scripts avanzados en Glide System y JavaScript para automatizar el cumplimiento de acuerdos de nivel de servicio (SLA), KPIs y reportabilidad ejecutiva.</li>
+                        <li data-i18n="job2_b3">Implementación de gobierno de datos, corrección de métricas y análisis de la intranet corporativa de Lundin Mining.</li>
+                    </ul>
+                </div>
+
+                <!-- JOB 3: R&D INDEPENDENT CONSULTING -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job3_title">Consultor Frontend Angular & Arquitecto Full Stack (R&D)</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold" data-i18n="job3_company">Consultoría Independiente (I+D)</span>
+                        <span class="text-electric-cyan text-xs font-mono">2024 - 2025</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job3_b1">Diseñé e implementé arquitecturas de microfrontends con Angular y TypeScript, optimizando tiempos de carga y reutilización de componentes UI en sistemas empresariales.</li>
+                        <li data-i18n="job3_b2">Desarrollé prototipos de integración de alta velocidad entre backends Java Spring Boot y servicios de Inteligencia Artificial Generativa (LLMs).</li>
                     </ul>
                 </div>
                 
-                <!-- Job 2 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 4: COASIN LOGICALIS -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Senior Process & Services Analyst, Development & Automation Lead</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job4_title">Analista Senior, Líder de Desarrollo & Automatización</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-2 mt-1">
                         <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Coasin Logicalis</span>
                         <span class="text-electric-cyan text-xs font-mono">2022 - 2024</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
-                        Responsible for Automation and Development in a multi-domain environment as a Senior Services Process Analyst. I implemented innovative solutions to optimize the daily management of operations simultaneously affecting multiple clients.
+                    <p class="text-gray-300 text-sm sm:text-base mb-3 skeleton-text" data-i18n="job4_desc">
+                        Responsable de Automatización y Desarrollo en un entorno multidominio, implementando soluciones innovadoras para optimizar la gestión operativa diaria de múltiples clientes corporativos simultáneamente.
                     </p>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>Creator of SOLVER Chile system</li>
-                        <li>Automation of key operational processes, improving efficiency and reducing response times</li>
-                        <li>Development and implementation of a web portal in Angular integrated with ServiceNow</li>
-                        <li>Integrations with Azure and Microsoft Chatbot for communication optimization and automation</li>
-                        <li>Optimization of work order flows using Flow Designer</li>
-                        <li>Design of custom portals in Service Portal at client and cross-client level</li>
-                        <li>Development of custom widgets to improve user experience</li>
-                        <li>Customization of Agent application for asset reading via barcode</li>
-                        <li>Implementation of solutions with custom Script Includes</li>
-                        <li>Exploration of AI applications with OpenAI for continuous improvement</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job4_b1">Lideré el desarrollo de la plataforma corporativa <strong>SOLVER Chile</strong>, integrando un frontend en Angular con microservicios en Java Spring Boot y PostgreSQL.</li>
+                        <li data-i18n="job4_b2">Orquesté la integración de ServiceNow con Azure Active Directory, Microsoft Chatbot y módulos de SAP, logrando la automatización end-to-end de solicitudes recurrentes.</li>
+                        <li data-i18n="job4_b3">Estandaricé flujos de atención e incidentes mediante Flow Designer y Script Includes, reduciendo tiempos de resolución operativa en más de un <strong>25%</strong>.</li>
+                        <li data-i18n="job4_b4">Diseño de portales personalizados y widgets en Service Portal, personalización de Agent Mobile App para lectura de activos por código de barras e integración con OpenAI.</li>
                     </ul>
                 </div>
 
-                <!-- Job 3 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 5: FIRWARE - ENTEL -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Full Stack Developer</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job5_title">Desarrollador Full Stack Senior</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
                         <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">FIRWARE - ENTEL</span>
                         <span class="text-electric-cyan text-xs font-mono">2021 - 2022</span>
                     </div>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>Comprehensive system for medical benefits management (JavaScript, Entity Framework C#, REST API)</li>
-                        <li>National vehicle fleet management system (JavaScript, SharePoint with custom libraries)</li>
-                        <li>Medical reimbursements module (JavaScript, SharePoint with custom libraries)</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job5_b1">Diseñé e implementé la arquitectura backend y frontend del Sistema Integral de Beneficios Médicos utilizando C#, .NET Core, Entity Framework, JavaScript y REST APIs.</li>
+                        <li data-i18n="job5_b2">Evolucioné el Sistema Nacional de Flota Vehicular y desarrollé el módulo de Reembolsos Médicos integrado sobre plataformas SharePoint Enterprise con librerías personalizadas.</li>
                     </ul>
                 </div>
 
-                <!-- Job 4 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 6: AXITY -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Senior Consultant / ServiceNow Developer</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job6_title">Consultor Senior / ServiceNow Specialist</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
                         <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Axity</span>
                         <span class="text-electric-cyan text-xs font-mono">2019 - 2021</span>
                     </div>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>BotFramework Webchat with ServiceNow for automation of AD and SAP password reset/unlock via REST API</li>
-                        <li>Integration between ServiceNow instances for incident module optimization</li>
-                        <li>Configuration and customization of Microsoft System Center SCCM for integration with ServiceNow</li>
-                        <li>Generation of custom reports in BMC Discovery and BMC Client Manager</li>
-                        <li>Configuration of Order Guides in ServiceNow for flow automation</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job6_b1">Integré BotFramework Webchat con ServiceNow para la auto-atención, desbloqueo y reseteo automatizado de credenciales en Active Directory y SAP vía REST API.</li>
+                        <li data-i18n="job6_b2">Configuré integraciones entre instancias ServiceNow (Instance-to-Instance), conectores Microsoft SCCM y flujos automatizados complejos mediante Order Guides.</li>
+                        <li data-i18n="job6_b3">Implementé BMC Discovery y BMC Client Management para la automatización de auditorías de parches, reportes personalizados y gestión de inventario.</li>
                     </ul>
                 </div>
 
-                <!-- Job 5 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 7: TIVIT -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Management Tools Specialist</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job7_title">Especialista en Herramientas de Gestión & ServiceNow Developer</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-2 mt-1">
                         <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">TIVIT</span>
                         <span class="text-electric-cyan text-xs font-mono">2017 - 2019</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
-                        ServiceNow Developer (Jakarta, Kingston and London versions) for clients such as Embotelladora Andina and Masisa, developing self-service catalogs at national and international levels.
+                    <p class="text-gray-300 text-sm sm:text-base mb-3 skeleton-text" data-i18n="job7_desc">
+                        Desarrollador ServiceNow (versiones Jakarta, Kingston y London) para clientes líderes como Embotelladora Andina, Coca-Cola y Masisa, construyendo catálogos de autoservicio a nivel nacional e internacional.
                     </p>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>Development of responsive web portals in Service Portal and Angular</li>
-                        <li>Integration of Nagios with ServiceNow via REST API with Java</li>
-                        <li>Complete configuration for Altiris integration in ServiceNow</li>
-                        <li>Service automation through custom Scripts</li>
-                        <li>Development of custom widgets for Service Portal</li>
-                        <li>Implementation of Virtual Agents, Flow, dashboards and automation tools</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job7_b1">Construcción de portales Service Portal adaptativos con Angular, widgets a medida, Virtual Agents, scripts Java/Glide y workflows en Flow Designer.</li>
+                        <li data-i18n="job7_b2">Creación de integración Java REST entre Nagios y ServiceNow para el monitoreo y generación automática de eventos de infraestructura, además de integración completa con Altiris.</li>
                     </ul>
                 </div>
 
-                <!-- Job 6 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 8: HELPNET SYNAPSIS (TIVIT) -->
+                <div class="mb-10 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Application Development Analyst</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
-                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Helpnet (outsourced to Synapsis TIVIT)</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job8_title">Analista Desarrollador Java Senior</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Helpnet Synapsis (TIVIT)</span>
                         <span class="text-electric-cyan text-xs font-mono">2016 - 2017</span>
                     </div>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>BASEL project for DLL Financial Solutions Partner: application for file processing with parallel processing (Java JFrame + SQL Server 2008 R2)</li>
-                        <li>Reading Manager (ADMLEC) for Enel: system for transmitting measurement results through web services</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job8_b1">Proyecto <strong>BASEL</strong> para DLL Financial Solutions Partner: desarrollo de aplicación de procesamiento masivo de archivos con ejecución multi-hilo (Java Swing/JFrame + SQL Server 2008 R2).</li>
+                        <li data-i18n="job8_b2">Optimización de plataforma Gestor de Lecturas (<strong>ADMLEC</strong>) para Enel mediante la centralización de transmisiones de medición a través de Web Services SOAP/REST.</li>
                     </ul>
                 </div>
 
-                <!-- Job 7 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                <!-- JOB 9: DYT GROUP CHILE / DYT SYSTEM -->
+                <div class="mb-6 relative pl-7 sm:pl-8 border-l border-[rgba(0,243,255,0.3)]">
                     <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">IT Project Manager</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
-                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">DYTGROUP Chile</span>
-                        <span class="text-electric-cyan text-xs font-mono">2013 - 2016</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" data-i18n="job9_title">Project Manager TI & Jefe de Desarrollo</h3>
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 mt-1">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">DYT Group Chile / DYT System</span>
+                        <span class="text-electric-cyan text-xs font-mono">2010 - 2016</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
-                        Process optimization for generating XBRL files for financial institutions (GNB, Bancamía, Bancolombia) according to requirements of the Superintendency of Securities and Insurance.
-                    </p>
-                </div>
-
-                <!-- Job 8 -->
-                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
-                    <div class="timeline-dot"></div>
-                    <h3 class="text-2xl font-bold text-white">Application Development Analyst</h3>
-                    <div class="flex flex-wrap justify-between items-end mb-2">
-                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">DYT System</span>
-                        <span class="text-electric-cyan text-xs font-mono">2010 - 2013</span>
-                    </div>
-                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
-                        <li>BBVA Bank - Corvus Notes: implementation of a global system for generating financial statements under IFRS (Java, Groovy & Grails, SQL Server 2008 R2)</li>
-                        <li>Metro Chile S.A.: development of Tótem systems, MAS machines, BICIMETRO Chile and SIGE (Visual Basic 6, Oracle DB, .NET 2005)</li>
-                        <li>Banmédica S.A.: correction of incidents in BanCobro system (Visual Basic 6, Oracle DB)</li>
-                        <li>Forum S.A.: maintenance and support of internal applications (Java, Oracle DB)</li>
+                    <ul class="galactic-list text-gray-300 text-sm sm:text-base space-y-1.5 skeleton-text">
+                        <li data-i18n="job9_b1">Dirigí el diseño y desarrollo de sistemas de reportería regulatoria <strong>XBRL e IFRS</strong> para entidades financieras líderes (Banco BBVA - Corvus Notes, Banco GNB, Bancamía, Bancolombia) bajo normativas de la Superintendencia de Valores y Seguros.</li>
+                        <li data-i18n="job9_b2"><strong>Metro de Santiago S.A.:</strong> desarrollo e integración de sistemas Tótem, máquinas MAS, BICIMETRO Chile y SIGE (Visual Basic 6, Oracle DB, .NET).</li>
+                        <li data-i18n="job9_b3"><strong>Banmédica S.A. & Forum S.A.:</strong> evolución, soporte y resolución crítica en sistemas financieros y de recaudación BanCobro utilizando Java, Groovy, Grails, Oracle DB y SQL Server.</li>
                     </ul>
                 </div>
             </section>
@@ -483,13 +639,17 @@
             <div class="energy-beam"></div>
 
             <!-- Certifications and Badges -->
-            <section class="mb-12">
-                <h2 class="text-3xl text-electric-cyan mb-6">Credentials</h2>
+            <section class="mb-10">
+                <h2 class="text-2xl sm:text-3xl text-electric-cyan mb-6 flex items-center">
+                    <span class="text-electric-purple mr-3 text-2xl">◈</span>
+                    <span data-i18n="sec_credentials">Credenciales & Certificaciones</span>
+                </h2>
                 
                 <div class="mb-6">
-                    <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-widest opacity-70">Official Certifications</h4>
+                    <h4 class="text-white font-bold mb-3 text-xs sm:text-sm uppercase tracking-widest opacity-80" data-i18n="cred_cat_1">Certificaciones Oficiales & Especialización</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="badge-galactic">SCRUM FOUNDATION PRO</span>
+                        <span class="badge-galactic text-electric-cyan font-bold">ServiceNow TERA EXPERT (Community)</span>
+                        <span class="badge-galactic">Scrum Foundation Professional (SFPC)</span>
                         <span class="badge-galactic">Scrum Learner 2025</span>
                         <span class="badge-galactic">ITOM Optimization Specialist</span>
                         <span class="badge-galactic">Google Cloud Computing</span>
@@ -502,13 +662,13 @@
                 </div>
 
                 <div>
-                    <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-widest opacity-70">ServiceNow Badges</h4>
+                    <h4 class="text-white font-bold mb-3 text-xs sm:text-sm uppercase tracking-widest opacity-80" data-i18n="cred_cat_2">ServiceNow University & Entrenamiento Especializado</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="badge-galactic text-electric-cyan border-l-cyan">Agent Intelligence (2025)</span>
+                        <span class="badge-galactic text-electric-cyan">Agent Intelligence (2025)</span>
                         <span class="badge-galactic">ServiceNow Fundamentals</span>
                         <span class="badge-galactic">Service Catalog Overview</span>
                         <span class="badge-galactic">Reporting Overview</span>
-                        <span class="badge-galactic">CMDB Configure</span>
+                        <span class="badge-galactic">CMDB Configure & CSDM 4.0</span>
                         <span class="badge-galactic">Domain Separation</span>
                         <span class="badge-galactic">Pre-Sales ITOM Optimization Specialization - Madrid</span>
                     </div>
@@ -517,208 +677,511 @@
 
             <div class="energy-beam"></div>
 
-            <!-- Multimedia -->
+            <!-- Multimedia / Transmission Files -->
             <section>
-                <h2 class="text-3xl text-electric-cyan mb-6">Transmission Files 🅟🅙🅜🅐 🅓🅔🅥🅔🅛🅞🅟🅔🅡</h2>
+                <h2 class="text-2xl sm:text-3xl text-electric-cyan mb-6 flex flex-wrap items-center gap-2">
+                    <span class="text-electric-purple mr-1 text-2xl">▶</span>
+                    <span data-i18n="sec_multimedia">Archivos de Transmisión</span>
+                    <span class="text-base sm:text-xl text-white">🅟🅙🅜🅐 🅓🅔🅥🅔🅛🅞🅟🅔🅡</span>
+                </h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                 <!-- 10. Matrix Canvas v1.0 -->
-<a href="https://www.youtube.com/watch?v=BwtXIEzuCLs" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Matrix Canvas v1.0</h4>
-            <p class="text-gray-500 text-xs">Local AI • Real-Time HTML5 & PDF Rendering</p>
-        </div>
-    </div>
-</a>
-                 
-                 <!-- 1. Build Agent (Original) -->
-<a href="https://youtu.be/fIkRKEbrGLs?si=mqHrsmPJ8IKhti-Q" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Build Agent: CrisisCommand</h4>
-            <p class="text-gray-500 text-xs">ServiceNow</p>
-        </div>
-    </div>
-</a>
-
-<!-- 2. Transcriptor en Tiempo Real -->
-<a href="https://www.youtube.com/watch?v=VFN4KlBvYpc" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Transcriptor en Tiempo Real</h4>
-            <p class="text-gray-500 text-xs">Angular • Spring Boot • Async Voice</p>
-        </div>
-    </div>
-</a>
-
-<!-- 3. Transcriptor Flutter V2 -->
-<a href="https://www.youtube.com/watch?v=5gKwfmRkRvo" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Motor de Voz & Transcripción V2</h4>
-            <p class="text-gray-500 text-xs">Flutter • Spring Boot • Low Latency</p>
-        </div>
-    </div>
-</a>
-
-<!-- 4. Chat Flutter Bidireccional -->
-<a href="https://www.youtube.com/watch?v=EteEbXYXH1s" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Chat Bidireccional en Tiempo Real</h4>
-            <p class="text-gray-500 text-xs">Flutter • Socket.IO • Spring Boot</p>
-        </div>
-    </div>
-</a>
-
-<!-- 5. WebSockets con Traducción Simultánea -->
-<a href="https://www.youtube.com/watch?v=AnMOQa34CuM" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">WebSockets & Traducción Multilenguaje</h4>
-            <p class="text-gray-500 text-xs">Real-Time STT • Translation Engine</p>
-        </div>
-    </div>
-</a>
-
-<!-- 6. Debate de 3 IAs en NGCloud Social -->
-<a href="https://www.youtube.com/watch?v=nAcSFVTcOTA" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Stress Test: 3 IAs Debatiendo (NGCloud)</h4>
-            <p class="text-gray-500 text-xs">Ollama LLaMA3 • Python • AES-256</p>
-        </div>
-    </div>
-</a>
-
-<!-- 7. Poema Transcrito con IA -->
-<a href="https://www.youtube.com/watch?v=K_u0H1PKilw" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Tech & Art: Poema Transcrito en Vivo</h4>
-            <p class="text-gray-500 text-xs">AI Speech Recognition</p>
-        </div>
-    </div>
-</a>
-
-<!-- 8. Python Video Matrix -->
-<a href="https://www.youtube.com/watch?v=pZNX7kkQE9M" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Python Video Matrix (Multi-Agente)</h4>
-            <p class="text-gray-500 text-xs">Local LLM • Diffusion • FFmpeg</p>
-        </div>
-    </div>
-</a>
-
-<!-- 9. Matrix: Asistente de IA Local -->
-<a href="https://www.youtube.com/watch?v=u4LHOaQu6X8" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-    <div class="flex items-center relative z-10">
-        <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
-        <div>
-            <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Matrix: Asistente IA Local Autónomo</h4>
-            <p class="text-gray-500 text-xs">Python • Ollama ReAct • RAG • LoRA</p>
-        </div>
-    </div>
-</a>
-
-                    <a href="https://youtu.be/fIkRKEbrGLs?si=mqHrsmPJ8IKhti-Q" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <!-- 1. Matrix Canvas v1.0 -->
+                    <a href="https://www.youtube.com/watch?v=BwtXIEzuCLs" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <div class="flex items-center relative z-10">
-                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
                             <div>
-                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Build Agent</h4>
-                                <p class="text-gray-500 text-xs">ServiceNow</p>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Matrix Canvas v1.0</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_1_sub">IA Local • Renderizado HTML5 & PDF en Tiempo Real</p>
                             </div>
                         </div>
                     </a>
                     
-                    <a href="https://youtu.be/HUYk9vdnx-U?si=Sr4aI5sHqlxb7eqt" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <!-- 2. Build Agent: CrisisCommand -->
+                    <a href="https://youtu.be/fIkRKEbrGLs?si=mqHrsmPJ8IKhti-Q" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <div class="flex items-center relative z-10">
-                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Build Agent: CrisisCommand</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_2_sub">Arquitectura Agéntica • ServiceNow</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 3. Transcriptor en Tiempo Real -->
+                    <a href="https://www.youtube.com/watch?v=VFN4KlBvYpc" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_3_title">Transcriptor en Tiempo Real</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_3_sub">Angular • Spring Boot • Voz Asíncrona</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 4. Motor de Voz & Transcripción V2 -->
+                    <a href="https://www.youtube.com/watch?v=5gKwfmRkRvo" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_4_title">Motor de Voz & Transcripción V2</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_4_sub">Flutter • Spring Boot • Baja Latencia</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 5. Chat Bidireccional en Tiempo Real -->
+                    <a href="https://www.youtube.com/watch?v=EteEbXYXH1s" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_5_title">Chat Bidireccional en Tiempo Real</h4>
+                                <p class="text-gray-400 text-xs">Flutter • Socket.IO • Spring Boot</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 6. WebSockets & Traducción Multilenguaje -->
+                    <a href="https://www.youtube.com/watch?v=AnMOQa34CuM" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_6_title">WebSockets & Traducción Multilenguaje</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_6_sub">STT en Tiempo Real • Motor de Traducción</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 7. Stress Test: 3 IAs Debatiendo (NGCloud) -->
+                    <a href="https://www.youtube.com/watch?v=nAcSFVTcOTA" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_7_title">Stress Test: 3 IAs Debatiendo (NGCloud)</h4>
+                                <p class="text-gray-400 text-xs">Ollama LLaMA3 • Python • AES-256</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 8. Tech & Art: Poema Transcrito en Vivo -->
+                    <a href="https://www.youtube.com/watch?v=K_u0H1PKilw" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_8_title">Tech & Art: Poema Transcrito en Vivo</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_8_sub">Reconocimiento de Voz con IA</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 9. Python Video Matrix (Multi-Agente) -->
+                    <a href="https://www.youtube.com/watch?v=pZNX7kkQE9M" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_9_title">Python Video Matrix (Multi-Agente)</h4>
+                                <p class="text-gray-400 text-xs">Local LLM • Diffusion • FFmpeg</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 10. Matrix: Asistente IA Local Autónomo -->
+                    <a href="https://www.youtube.com/watch?v=u4LHOaQu6X8" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_10_title">Matrix: Asistente IA Local Autónomo</h4>
+                                <p class="text-gray-400 text-xs">Python • Ollama ReAct • RAG • LoRA</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- 11. Gemini v.0.0.3 Virtual Agent -->
+                    <a href="https://youtu.be/HUYk9vdnx-U?si=Sr4aI5sHqlxb7eqt" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
                             <div>
                                 <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Gemini v.0.0.3 Virtual Agent</h4>
-                                <p class="text-gray-500 text-xs">ServiceNow ServicePortal</p>
+                                <p class="text-gray-400 text-xs">ServiceNow ServicePortal</p>
                             </div>
                         </div>
                     </a>
                     
-                    <a href="https://youtu.be/mley6mu4ID8?si=cH_hPNJQAiUcUHJA" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <!-- 12. Incident Management -->
+                    <a href="https://youtu.be/mley6mu4ID8?si=cH_hPNJQAiUcUHJA" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <div class="flex items-center relative z-10">
-                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
                             <div>
-                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Incident Management</h4>
-                                <p class="text-gray-500 text-xs">Advanced Module</p>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_12_title">Gestión de Incidentes</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_12_sub">Módulo Avanzado ServiceNow</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/IXwDGb6dCHI?si=dcycetfyIwQgadJd" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <!-- 13. Banking Management -->
+                    <a href="https://youtu.be/IXwDGb6dCHI?si=dcycetfyIwQgadJd" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <div class="flex items-center relative z-10">
-                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
                             <div>
-                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Banking Management</h4>
-                                <p class="text-gray-500 text-xs">Operational Centralization</p>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_13_title">Gestión Bancaria</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_13_sub">Centralización Operacional</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="https://youtu.be/IYGzEcfpY44?si=tVSpjScU8J2s3pBR" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <!-- 14. Complex Systems -->
+                    <a href="https://youtu.be/IYGzEcfpY44?si=tVSpjScU8J2s3pBR" target="_blank" rel="noopener noreferrer" class="group block p-4 rounded-xl border border-[rgba(188,19,254,0.35)] bg-[rgba(10,15,30,0.65)] hover:bg-[rgba(0,243,255,0.08)] hover:border-[var(--electric-cyan)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.12)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         <div class="flex items-center relative z-10">
-                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <span class="text-2xl mr-3.5 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
                             <div>
-                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Complex Systems</h4>
-                                <p class="text-gray-500 text-xs">Full Stack Architecture</p>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase" data-i18n="vid_14_title">Sistemas Complejos</h4>
+                                <p class="text-gray-400 text-xs" data-i18n="vid_14_sub">Arquitectura Full Stack</p>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </section>
 
         </main>
     </div>
 
+    <!-- Cyber Toast Feedback -->
+    <div id="cyber-toast" class="cyber-toast font-sci-fi text-xs tracking-wider"></div>
+
     <script>
-        // Loading simulation with skeleton
+        // === BILINGUAL DICTIONARY (ESPAÑOL DEFAULT / ENGLISH) ===
+        const translations = {
+            es: {
+                page_title: "Patricio Javier Moya Antón - Arquitecto de Soluciones | Consultor Senior ServiceNow & Full Stack",
+                system_status: "SISTEMA ACTIVO // DOSSIER BILINGÜE",
+                btn_print: "PDF / IMPRIMIR",
+                role_headline: "Arquitecto de Soluciones | Consultor Senior ServiceNow & Full Stack",
+                tera_sub: "Unidad Élite ServiceNow",
+                sec_contact: "Enlace de Datos",
+                sn_profile: "Perfil Oficial ServiceNow",
+                sec_skills: "Arsenal Tecnológico",
+                skill_cat_sn: "Arquitectura ServiceNow",
+                skill_cat_dev: "Desarrollo Frontend & Backend",
+                skill_microservices: "Microservicios",
+                skill_cat_cloud: "Bases de Datos, Cloud & Enterprise",
+                skill_cat_ai: "Metodologías & Especialidades IA",
+                skill_gov: "Gobierno de Datos",
+                skill_ux: "UI/UX Empresarial",
+                skill_rpa: "Automatización RPA/IA",
+                sec_education: "Academia",
+                edu_1_title: "Ingeniería en Informática",
+                edu_2_title: "Matemáticas Avanzadas",
+                edu_2_date: "2002 (Beca de Excelencia)",
+                sec_languages: "Idiomas",
+                lang_es_name: "🇪🇸 Español",
+                lang_es_level: "Nativo",
+                lang_en_name: "🇺🇸 Inglés",
+                lang_en_level: "Técnico Profesional",
+                lang_pt_name: "🇧🇷 Portugués",
+                lang_pt_level: "Funcional",
+                sec_profile: "Perfil Profesional",
+                profile_summary: "Arquitecto de Soluciones y Consultor Senior con más de 15 años de trayectoria liderando el diseño, integración y modernización de plataformas empresariales de alta complejidad en sectores de minería, banca, salud, telecomunicaciones y servicios financieros. Reconocido como TERA EXPERT por la comunidad global de ServiceNow, me especializo en ecosistemas ServiceNow (CSDM 4.0, ITSM, ITOM, ITAM, CMDB) e ingeniería de software Full Stack (Angular, Java Spring Boot, .NET, REST/SOAP APIs). Experto en automatización de procesos corporativos, gobierno de datos, integraciones multinivel (Azure, SAP, SCCM) e implementación de soluciones orientadas a la continuidad operativa, escalabilidad e Inteligencia Artificial empresarial.",
+                sec_experience: "Bitácora de Misiones",
+                
+                // Job 1 - SQM
+                job1_title: "Arquitecto de Soluciones & Consultor Senior ServiceNow",
+                job1_date: "Actualidad (Desde 2024)",
+                job1_b1: "<strong>Arquitectura CSDM & Servicios:</strong> Lideré el diseño e implementación del Modelo de Servicios de Negocio y Ofertas de Servicio bajo CSDM 4.0, vinculando infraestructura crítica, aplicaciones, SLAs e incidentes para garantizar trazabilidad operativa y financiera.",
+                job1_b2: "<strong>Gobierno de Datos & Taxonomía:</strong> Normalicé catálogos de servicios masivos, definiendo taxonomías bilingües y estándares de nomenclatura preparados para analítica avanzada e integración con soluciones de IA.",
+                job1_b3: "<strong>CMDB & ITAM Enterprise:</strong> Implementé reglas de descubrimiento con Discovery y cargadores masivos para erradicar inconsistencias e inventariar Activos TI, reduciendo duplicidades en la CMDB.",
+                job1_b4: "<strong>Integraciones Empresariales:</strong> Diseñé e implementé conectores de datos bidireccionales vía APIs REST entre ServiceNow y plataformas corporativas como SCCM, Active Directory, Azure, SAP y Power BI.",
+                job1_b5: "<strong>Desarrollo Portal UX/UI & ITSM:</strong> Desarrollé portales Service Portal accesibles y adaptativos resguardando la compatibilidad Out-Of-The-Box (OOTB) para procesos de First Call Resolution (FCR) y auditorías.",
+
+                // Job 2 - Lundin Mining
+                job2_title: "Consultor Senior ServiceNow",
+                job2_date: "Oct 2024 - Dic 2024",
+                job2_b1: "Implementé la consolidación, carga y auditoría de Configuration Items (CIs) en la CMDB corporativa, optimizando el rendimiento de consultas y la calidad de datos.",
+                job2_b2: "Desarrollé scripts avanzados en Glide System y JavaScript para automatizar el cumplimiento de acuerdos de nivel de servicio (SLA), KPIs y reportabilidad ejecutiva.",
+                job2_b3: "Implementación de gobierno de datos, corrección de métricas y análisis de la intranet corporativa de Lundin Mining.",
+
+                // Job 3 - Independent R&D
+                job3_title: "Consultor Frontend Angular & Arquitecto Full Stack (R&D)",
+                job3_company: "Consultoría Independiente (I+D)",
+                job3_b1: "Diseñé e implementé arquitecturas de microfrontends con Angular y TypeScript, optimizando tiempos de carga y reutilización de componentes UI en sistemas empresariales.",
+                job3_b2: "Desarrollé prototipos de integración de alta velocidad entre backends Java Spring Boot y servicios de Inteligencia Artificial Generativa (LLMs).",
+
+                // Job 4 - Coasin Logicalis
+                job4_title: "Analista Senior, Líder de Desarrollo & Automatización",
+                job4_desc: "Responsable de Automatización y Desarrollo en un entorno multidominio, implementando soluciones innovadoras para optimizar la gestión operativa diaria de múltiples clientes corporativos simultáneamente.",
+                job4_b1: "Lideré el desarrollo de la plataforma corporativa <strong>SOLVER Chile</strong>, integrando un frontend en Angular con microservicios en Java Spring Boot y PostgreSQL.",
+                job4_b2: "Orquesté la integración de ServiceNow con Azure Active Directory, Microsoft Chatbot y módulos de SAP, logrando la automatización end-to-end de solicitudes recurrentes.",
+                job4_b3: "Estandaricé flujos de atención e incidentes mediante Flow Designer y Script Includes, reduciendo tiempos de resolución operativa en más de un <strong>25%</strong>.",
+                job4_b4: "Diseño de portales personalizados y widgets en Service Portal, personalización de Agent Mobile App para lectura de activos por código de barras e integración con OpenAI.",
+
+                // Job 5 - Firware Entel
+                job5_title: "Desarrollador Full Stack Senior",
+                job5_b1: "Diseñé e implementé la arquitectura backend y frontend del Sistema Integral de Beneficios Médicos utilizando C#, .NET Core, Entity Framework, JavaScript y REST APIs.",
+                job5_b2: "Evolucioné el Sistema Nacional de Flota Vehicular y desarrollé el módulo de Reembolsos Médicos integrado sobre plataformas SharePoint Enterprise con librerías personalizadas.",
+
+                // Job 6 - Axity
+                job6_title: "Consultor Senior / ServiceNow Specialist",
+                job6_b1: "Integré BotFramework Webchat con ServiceNow para la auto-atención, desbloqueo y reseteo automatizado de credenciales en Active Directory y SAP vía REST API.",
+                job6_b2: "Configuré integraciones entre instancias ServiceNow (Instance-to-Instance), conectores Microsoft SCCM y flujos automatizados complejos mediante Order Guides.",
+                job6_b3: "Implementé BMC Discovery y BMC Client Management para la automatización de auditorías de parches, reportes personalizados y gestión de inventario.",
+
+                // Job 7 - TIVIT
+                job7_title: "Especialista en Herramientas de Gestión & ServiceNow Developer",
+                job7_desc: "Desarrollador ServiceNow (versiones Jakarta, Kingston y London) para clientes líderes como Embotelladora Andina, Coca-Cola y Masisa, construyendo catálogos de autoservicio a nivel nacional e internacional.",
+                job7_b1: "Construcción de portales Service Portal adaptativos con Angular, widgets a medida, Virtual Agents, scripts Java/Glide y workflows en Flow Designer.",
+                job7_b2: "Creación de integración Java REST entre Nagios y ServiceNow para el monitoreo y generación automática de eventos de infraestructura, además de integración completa con Altiris.",
+
+                // Job 8 - Helpnet Synapsis
+                job8_title: "Analista Desarrollador Java Senior",
+                job8_b1: "Proyecto <strong>BASEL</strong> para DLL Financial Solutions Partner: desarrollo de aplicación de procesamiento masivo de archivos con ejecución multi-hilo (Java Swing/JFrame + SQL Server 2008 R2).",
+                job8_b2: "Optimización de plataforma Gestor de Lecturas (<strong>ADMLEC</strong>) para Enel mediante la centralización de transmisiones de medición a través de Web Services SOAP/REST.",
+
+                // Job 9 - DYT
+                job9_title: "Project Manager TI & Jefe de Desarrollo",
+                job9_b1: "Dirigí el diseño y desarrollo de sistemas de reportería regulatoria <strong>XBRL e IFRS</strong> para entidades financieras líderes (Banco BBVA - Corvus Notes, Banco GNB, Bancamía, Bancolombia) bajo normativas de la Superintendencia de Valores y Seguros.",
+                job9_b2: "<strong>Metro de Santiago S.A.:</strong> desarrollo e integración de sistemas Tótem, máquinas MAS, BICIMETRO Chile y SIGE (Visual Basic 6, Oracle DB, .NET).",
+                job9_b3: "<strong>Banmédica S.A. & Forum S.A.:</strong> evolución, soporte y resolución crítica en sistemas financieros y de recaudación BanCobro utilizando Java, Groovy, Grails, Oracle DB y SQL Server.",
+
+                sec_credentials: "Credenciales & Certificaciones",
+                cred_cat_1: "Certificaciones Oficiales & Especialización",
+                cred_cat_2: "ServiceNow University & Entrenamiento Especializado",
+                sec_multimedia: "Archivos de Transmisión",
+
+                // Videos
+                vid_1_sub: "IA Local • Renderizado HTML5 & PDF en Tiempo Real",
+                vid_2_sub: "Arquitectura Agéntica • ServiceNow",
+                vid_3_title: "Transcriptor en Tiempo Real",
+                vid_3_sub: "Angular • Spring Boot • Voz Asíncrona",
+                vid_4_title: "Motor de Voz & Transcripción V2",
+                vid_4_sub: "Flutter • Spring Boot • Baja Latencia",
+                vid_5_title: "Chat Bidireccional en Tiempo Real",
+                vid_6_title: "WebSockets & Traducción Multilenguaje",
+                vid_6_sub: "STT en Tiempo Real • Motor de Traducción",
+                vid_7_title: "Stress Test: 3 IAs Debatiendo (NGCloud)",
+                vid_8_title: "Tech & Art: Poema Transcrito en Vivo",
+                vid_8_sub: "Reconocimiento de Voz con IA",
+                vid_9_title: "Python Video Matrix (Multi-Agente)",
+                vid_10_title: "Matrix: Asistente IA Local Autónomo",
+                vid_12_title: "Gestión de Incidentes",
+                vid_12_sub: "Módulo Avanzado ServiceNow",
+                vid_13_title: "Gestión Bancaria",
+                vid_13_sub: "Centralización Operacional",
+                vid_14_title: "Sistemas Complejos",
+                vid_14_sub: "Arquitectura Full Stack",
+                toast_copied: "COPIADO AL PORTAPAPELES: ",
+                toast_lang: "IDIOMA: ESPAÑOL ACTIVADO 🇪🇸"
+            },
+            en: {
+                page_title: "Patricio Javier Moya Antón - Solutions Architect | Senior ServiceNow & Full Stack Consultant",
+                system_status: "SYSTEM ONLINE // BILINGUAL DOSSIER",
+                btn_print: "PDF / PRINT",
+                role_headline: "Solutions Architect | Senior ServiceNow & Full Stack Consultant",
+                tera_sub: "ServiceNow Elite Unit",
+                sec_contact: "Data Link",
+                sn_profile: "Official ServiceNow Profile",
+                sec_skills: "Tech Arsenal",
+                skill_cat_sn: "ServiceNow Architecture",
+                skill_cat_dev: "Frontend & Backend Development",
+                skill_microservices: "Microservices",
+                skill_cat_cloud: "Databases, Cloud & Enterprise",
+                skill_cat_ai: "Methodologies & AI Specialties",
+                skill_gov: "Data Governance",
+                skill_ux: "Enterprise UI/UX",
+                skill_rpa: "RPA / AI Automation",
+                sec_education: "Academy",
+                edu_1_title: "Computer Engineering",
+                edu_2_title: "Advanced Mathematics",
+                edu_2_date: "2002 (Merit Scholarship)",
+                sec_languages: "Languages",
+                lang_es_name: "🇪🇸 Spanish",
+                lang_es_level: "Native",
+                lang_en_name: "🇺🇸 English",
+                lang_en_level: "Technical Professional",
+                lang_pt_name: "🇧🇷 Portuguese",
+                lang_pt_level: "Functional",
+                sec_profile: "Professional Profile",
+                profile_summary: "Solutions Architect and Senior Consultant with over 15 years of experience leading the design, integration, and modernization of high-complexity enterprise platforms across mining, banking, healthcare, telecommunications, and financial services sectors. Recognized as a TERA EXPERT by the global ServiceNow community, I specialize in ServiceNow ecosystems (CSDM 4.0, ITSM, ITOM, ITAM, CMDB) and Full Stack software engineering (Angular, Java Spring Boot, .NET, REST/SOAP APIs). Expert in corporate process automation, data governance, multi-tier integrations (Azure, SAP, SCCM), and implementing solutions focused on operational continuity, scalability, and Enterprise Artificial Intelligence.",
+                sec_experience: "Mission Log",
+
+                // Job 1 - SQM
+                job1_title: "Solutions Architect & Senior ServiceNow Consultant",
+                job1_date: "Present (Since 2024)",
+                job1_b1: "<strong>CSDM & Service Architecture:</strong> Led the design and implementation of the Business Service Model and Service Offerings under CSDM 4.0, linking critical infrastructure, applications, SLAs, and incidents to ensure operational and financial traceability.",
+                job1_b2: "<strong>Data Governance & Taxonomy:</strong> Standardized massive service catalogs by defining bilingual taxonomies and naming conventions ready for advanced analytics and AI solution integration.",
+                job1_b3: "<strong>Enterprise CMDB & ITAM:</strong> Implemented Discovery rules and bulk loaders to eradicate inconsistencies and inventory IT Assets, significantly reducing CMDB duplicates.",
+                job1_b4: "<strong>Enterprise Integrations:</strong> Designed and implemented bidirectional data connectors via REST APIs between ServiceNow and corporate platforms including SCCM, Active Directory, Azure, SAP, and Power BI.",
+                job1_b5: "<strong>UX/UI Service Portal & ITSM Development:</strong> Built accessible, responsive Service Portals preserving Out-Of-The-Box (OOTB) compatibility for First Call Resolution (FCR) workflows and compliance audits.",
+
+                // Job 2 - Lundin Mining
+                job2_title: "Senior ServiceNow Consultant",
+                job2_date: "Oct 2024 - Dec 2024",
+                job2_b1: "Executed the consolidation, bulk loading, and auditing of Configuration Items (CIs) in the corporate CMDB, optimizing query performance and overall data quality.",
+                job2_b2: "Developed advanced scripts in Glide System and JavaScript to automate Service Level Agreement (SLA) compliance, KPIs, and executive reporting.",
+                job2_b3: "Implemented data governance standards, metric corrections, and comprehensive analytics for Lundin Mining's corporate intranet.",
+
+                // Job 3 - Independent R&D
+                job3_title: "Angular Frontend Consultant & Full Stack Architect (R&D)",
+                job3_company: "Independent Consulting (R&D)",
+                job3_b1: "Architected and implemented microfrontend ecosystems using Angular and TypeScript, optimizing load times and UI component reusability across enterprise systems.",
+                job3_b2: "Built high-speed integration prototypes connecting Java Spring Boot backends with Generative Artificial Intelligence (LLM) services.",
+
+                // Job 4 - Coasin Logicalis
+                job4_title: "Senior Analyst, Development & Automation Lead",
+                job4_desc: "Head of Automation and Development within a multi-domain environment, delivering innovative solutions to optimize daily operations simultaneously impacting multiple corporate clients.",
+                job4_b1: "Led the development of the corporate platform <strong>SOLVER Chile</strong>, integrating an Angular frontend with Java Spring Boot microservices and PostgreSQL.",
+                job4_b2: "Orchestrated ServiceNow integrations with Azure Active Directory, Microsoft Chatbot, and SAP modules, achieving end-to-end automation of recurring service requests.",
+                job4_b3: "Standardized service and incident workflows using Flow Designer and Script Includes, reducing operational resolution times by over <strong>25%</strong>.",
+                job4_b4: "Designed custom portals and widgets in Service Portal, customized the Agent Mobile App for barcode asset scanning, and spearheaded OpenAI integrations.",
+
+                // Job 5 - Firware Entel
+                job5_title: "Senior Full Stack Developer",
+                job5_b1: "Architected and implemented the backend and frontend of the Comprehensive Medical Benefits System using C#, .NET Core, Entity Framework, JavaScript, and REST APIs.",
+                job5_b2: "Evolved the National Vehicle Fleet Management System and developed the Medical Reimbursements module integrated on SharePoint Enterprise platforms with custom libraries.",
+
+                // Job 6 - Axity
+                job6_title: "Senior Consultant / ServiceNow Specialist",
+                job6_b1: "Integrated BotFramework Webchat with ServiceNow for self-service, automated unlocking, and password resets in Active Directory and SAP via REST API.",
+                job6_b2: "Configured Instance-to-Instance ServiceNow integrations, Microsoft SCCM connectors, and complex automated workflows using Order Guides.",
+                job6_b3: "Implemented BMC Discovery and BMC Client Management to automate patch compliance audits, custom reporting, and IT inventory management.",
+
+                // Job 7 - TIVIT
+                job7_title: "Management Tools Specialist & ServiceNow Developer",
+                job7_desc: "ServiceNow Developer (Jakarta, Kingston, and London releases) for flagship clients including Embotelladora Andina, Coca-Cola, and Masisa, building national and international self-service catalogs.",
+                job7_b1: "Built responsive Service Portals with Angular, custom widgets, Virtual Agents, Java/Glide scripts, and Flow Designer workflows.",
+                job7_b2: "Created a Java REST integration between Nagios and ServiceNow for automated infrastructure monitoring and event generation, alongside full Altiris integration.",
+
+                // Job 8 - Helpnet Synapsis
+                job8_title: "Senior Java Developer Analyst",
+                job8_b1: "<strong>BASEL</strong> Project for DLL Financial Solutions Partner: engineered a high-volume file processing application featuring multi-threaded parallel execution (Java Swing/JFrame + SQL Server 2008 R2).",
+                job8_b2: "Optimized the Meter Reading Manager platform (<strong>ADMLEC</strong>) for Enel by centralizing measurement transmissions via SOAP/REST Web Services.",
+
+                // Job 9 - DYT
+                job9_title: "IT Project Manager & Head of Development",
+                job9_b1: "Directed the design and development of <strong>XBRL and IFRS</strong> regulatory reporting systems for leading financial institutions (BBVA Bank - Corvus Notes, Banco GNB, Bancamía, Bancolombia) under Superintendency of Securities and Insurance regulations.",
+                job9_b2: "<strong>Metro de Santiago S.A.:</strong> developed and integrated Totem kiosks, MAS ticketing machines, BICIMETRO Chile, and SIGE systems (Visual Basic 6, Oracle DB, .NET).",
+                job9_b3: "<strong>Banmédica S.A. & Forum S.A.:</strong> maintained, enhanced, and resolved critical incidents in BanCobro financial and billing systems using Java, Groovy, Grails, Oracle DB, and SQL Server.",
+
+                sec_credentials: "Credentials & Certifications",
+                cred_cat_1: "Official Certifications & Specializations",
+                cred_cat_2: "ServiceNow University & Specialized Training",
+                sec_multimedia: "Transmission Files",
+
+                // Videos
+                vid_1_sub: "Local AI • Real-Time HTML5 & PDF Rendering",
+                vid_2_sub: "Agentic Architecture • ServiceNow",
+                vid_3_title: "Real-Time Voice Transcriber",
+                vid_3_sub: "Angular • Spring Boot • Async Voice",
+                vid_4_title: "Voice & Transcription Engine V2",
+                vid_4_sub: "Flutter • Spring Boot • Low Latency",
+                vid_5_title: "Real-Time Bidirectional Chat",
+                vid_6_title: "WebSockets & Multilingual Translation",
+                vid_6_sub: "Real-Time STT • Translation Engine",
+                vid_7_title: "Stress Test: 3 AIs Debating (NGCloud)",
+                vid_8_title: "Tech & Art: Live Transcribed Poem",
+                vid_8_sub: "AI Speech Recognition",
+                vid_9_title: "Python Video Matrix (Multi-Agent)",
+                vid_10_title: "Matrix: Autonomous Local AI Assistant",
+                vid_12_title: "Incident Management",
+                vid_12_sub: "Advanced ServiceNow Module",
+                vid_13_title: "Banking Management",
+                vid_13_sub: "Operational Centralization",
+                vid_14_title: "Complex Systems",
+                vid_14_sub: "Full Stack Architecture",
+                toast_copied: "COPIED TO CLIPBOARD: ",
+                toast_lang: "LANGUAGE: ENGLISH ACTIVATED 🇺🇸"
+            }
+        };
+
+        let currentLang = 'es';
+        let toastTimeout = null;
+
+        function showToast(message) {
+            const toast = document.getElementById('cyber-toast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2400);
+        }
+
+        function copyText(text) {
+            try {
+                const tempInput = document.createElement('input');
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast(translations[currentLang].toast_copied + text);
+            } catch (err) {
+                console.warn('Copy fallback failed', err);
+            }
+        }
+
+        function setLanguage(lang, silent = false) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            const root = document.getElementById('cv-root');
+            
+            // Update active button states
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.documentElement.lang = lang;
+
+            // Subtle transition animation
+            if (!silent && root) {
+                root.classList.add('lang-switching');
+            }
+
+            setTimeout(() => {
+                const dict = translations[lang];
+                document.title = dict.page_title;
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key] !== undefined) {
+                        el.innerHTML = dict[key];
+                    }
+                });
+
+                if (!silent && root) {
+                    root.classList.remove('lang-switching');
+                    showToast(dict.toast_lang);
+                }
+            }, silent ? 0 : 120);
+        }
+
+        // Initial load: default Spanish + skeleton loading effect
         document.addEventListener('DOMContentLoaded', function() {
+            setLanguage('es', true);
             const skeletonElements = document.querySelectorAll('.skeleton-text');
             
-            // Apply temporary skeleton effect
             skeletonElements.forEach(element => {
                 element.style.minHeight = '20px';
             });
             
-            // Simulate content loading (in production it would be real)
             setTimeout(() => {
                 skeletonElements.forEach(element => {
                     element.classList.remove('skeleton-text');
                 });
-            }, 1500); // 1.5 seconds to simulate loading
+            }, 1100);
         });
     </script>
 </body>
