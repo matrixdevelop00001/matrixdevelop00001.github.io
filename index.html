@@ -1,186 +1,604 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+ <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patricio Javier Moya Antón | Solution Architect & ServiceNow Tera Expert</title>
-  <script src="https://tailwindcss.com"></script>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            slate: {
-              850: '#151e2e',
-              900: '#0f172a',
-              950: '#080d1a',
-            },
-            teal: {
-              450: '#14b8a6',
-            }
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricio Javier Moya Antón - Senior Full Stack Consultant</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Orbitron for futuristic titles, Rajdhani for technical text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === VARIABLES & GENERAL STYLE === */
+        :root {
+            --electric-cyan: #00f3ff;
+            --electric-purple: #bc13fe;
+            --electric-blue: #2d6cdf;
+            --deep-space: #050b14;
+            --starlight: #e0f7ff;
+            --glass-bg: rgba(10, 15, 30, 0.85);
         }
-      }
-    }
-  </script>
+
+        body {
+            background-color: var(--deep-space);
+            background-image: 
+                radial-gradient(circle at 50% 0%, #2d1b4e 0%, transparent 50%),
+                radial-gradient(circle at 0% 50%, #0d2345 0%, transparent 50%),
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDAwIiAvPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiIC8+PC9zdmc+'); 
+            color: var(--starlight);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* === TYPOGRAPHY === */
+        h1, h2, h3, .font-sci-fi {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === UTILS === */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            box-shadow: 
+                0 0 30px rgba(0, 243, 255, 0.1),
+                inset 0 0 20px rgba(188, 19, 254, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Skeleton Loading Effect */
+        .skeleton {
+            background: linear-gradient(90deg, 
+                rgba(45, 27, 78, 0.1) 25%, 
+                rgba(45, 107, 223, 0.2) 50%, 
+                rgba(45, 27, 78, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        .skeleton-text {
+            color: transparent !important;
+            position: relative;
+            user-select: none;
+        }
+
+        .skeleton-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(45, 27, 78, 0.1) 25%, 
+                rgba(45, 107, 223, 0.2) 50%, 
+                rgba(45, 27, 78, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Electric Corners */
+        .electric-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--electric-cyan);
+            box-shadow: 0 0 10px var(--electric-cyan);
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+        .top-left { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .top-right { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 0; left: 0; border-right: none; border-top: none; }
+        .bottom-right { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        /* Text Effects */
+        .text-electric-cyan {
+            color: var(--electric-cyan);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.8);
+        }
+        
+        .text-electric-purple {
+            color: var(--electric-purple);
+            text-shadow: 0 0 8px rgba(188, 19, 254, 0.8);
+        }
+
+        /* Section Divider - Energy Beam */
+        .energy-beam {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--electric-purple), var(--electric-cyan), transparent);
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 0 10px var(--electric-cyan);
+        }
+
+        /* Tech Tags / Runes */
+        .tech-rune {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid var(--electric-cyan);
+            color: var(--electric-cyan);
+            padding: 0.3rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            transform: skewX(-15deg);
+            transition: all 0.3s;
+            box-shadow: 0 0 5px rgba(0, 243, 255, 0.2);
+        }
+        .tech-rune span {
+            display: inline-block;
+            transform: skewX(15deg);
+        }
+        .tech-rune:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 15px var(--electric-cyan);
+            text-shadow: 0 0 5px white;
+            transform: skewX(-15deg) translateY(-2px);
+        }
+
+        /* Badges */
+        .badge-galactic {
+            background: linear-gradient(90deg, rgba(45, 27, 78, 0.8), rgba(10, 15, 30, 0.8));
+            border-left: 3px solid var(--electric-purple);
+            color: #d0d0d0;
+            padding: 5px 10px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .badge-galactic:hover {
+            border-left-color: var(--electric-cyan);
+            color: white;
+            box-shadow: -5px 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        /* Links */
+        a { transition: all 0.3s; }
+        a:hover { color: var(--electric-cyan); text-shadow: 0 0 10px var(--electric-cyan); }
+
+        /* List Styles */
+        ul.galactic-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        ul.galactic-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--electric-purple);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Timeline Dot */
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--deep-space);
+            border: 2px solid var(--electric-cyan);
+            box-shadow: 0 0 10px var(--electric-cyan);
+            border-radius: 50%;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cv-layout { flex-direction: column; }
+            .sidebar-col { width: 100%; border-right: none; border-bottom: 1px solid var(--electric-purple); }
+            .main-col { width: 100%; }
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-teal-500 selection:text-white">
+<body class="min-h-screen p-4 lg:p-8 flex justify-center items-start">
 
-  <!-- Navbar -->
-  <header class="fixed top-0 w-full z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-bold text-lg tracking-tight text-white">
-        PJMA<span class="text-teal-400">.dev</span>
-      </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
-        <a href="#about" class="hover:text-teal-400 transition">About</a>
-        <a href="#capabilities" class="hover:text-teal-400 transition">Capabilities</a>
-        <a href="#experience" class="hover:text-teal-400 transition">Experience</a>
-        <a href="#stack" class="hover:text-teal-400 transition">Tech Stack</a>
-        <a href="#credentials" class="hover:text-teal-400 transition">Credentials</a>
-      </nav>
-      <a href="mailto:patricio.moya.anton@gmail.com" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-teal-500/10 text-teal-400 border border-teal-500/30 rounded-lg hover:bg-teal-500 hover:text-slate-950 transition">
-        Contact
-      </a>
+    <!-- Main Frame -->
+    <div class="cv-layout max-w-6xl w-full glass-panel flex flex-col md:flex-row mt-4 mb-10 relative">
+        
+        <!-- Electric Corners -->
+        <div class="electric-corner top-left"></div>
+        <div class="electric-corner top-right"></div>
+        <div class="electric-corner bottom-left"></div>
+        <div class="electric-corner bottom-right"></div>
+
+        <!-- === SIDEBAR (LEFT - DARK) === -->
+        <aside class="sidebar-col w-full md:w-1/3 p-8 border-r border-[rgba(188,19,254,0.3)] bg-[rgba(5,11,20,0.9)] relative z-10">
+            
+            <!-- Profile Header -->
+            <div class="text-center md:text-left mb-10 relative">
+                <!-- Photo / Avatar Placeholder -->
+                <div class="inline-block mb-6 p-1 border-2 border-dashed border-[var(--electric-purple)] rounded-full relative">
+                    <div class="absolute inset-0 rounded-full animate-pulse bg-[rgba(188,19,254,0.2)]"></div>
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-b from-gray-900 to-black flex items-center justify-center mx-auto relative z-10 border border-[var(--electric-cyan)]">
+                        <span class="text-4xl text-white font-sci-fi">P</span> 
+                    </div>
+                </div>
+
+                <h1 class="text-4xl font-bold text-electric-cyan leading-none mb-2 tracking-tighter">Patricio Javier<br><span class="text-white text-2xl">Moya Antón</span></h1>
+                <h2 class="text-sm tracking-[0.2em] text-electric-purple uppercase mb-4 font-bold">Senior Full Stack Consultant</h2>
+                
+                <!-- Tera Contributor Badge -->
+                <div class="inline-block bg-gradient-to-r from-[rgba(0,243,255,0.1)] to-transparent border-l-4 border-[var(--electric-cyan)] pl-3 py-2 pr-4">
+                    <h3 class="text-xl font-bold text-white font-sci-fi shadow-cyan">TERA EXPERT</h3>
+                    <p class="text-xs text-electric-cyan tracking-widest uppercase">ServiceNow Elite Unit</p>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <section class="mb-12">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Data Link</h3>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center group cursor-pointer">
+                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">⚡</span>
+                        <span class="group-hover:text-white transition-colors">+56952063997</span>
+                    </li>
+                    <li class="flex items-center group cursor-pointer">
+                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">@</span>
+                        <span class="group-hover:text-white transition-colors">patricio.moya.anton@gmail.com</span>
+                    </li>
+                    <li class="flex items-center group">
+                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">🔗</span>
+                        <a href="https://www.linkedin.com/in/pjma" target="_blank" class="group-hover:text-white transition-colors">LinkedIn / pjma</a>
+                    </li>
+                    <li class="flex items-center group">
+                        <span class="text-xl mr-3 text-electric-cyan group-hover:scale-110 transition-transform">★</span>
+                        <a href="https://account.servicenow.com/personal-data/11e980cc4/a8b88c6ad/b40a6cdff/a1f44KL6L/resume.html" target="_blank" class="group-hover:text-white transition-colors">ServiceNow Profile</a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Skills -->
+            <section class="mb-12">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Tech Arsenal</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-white text-xs font-bold uppercase mb-3 tracking-wider opacity-70">Core Systems</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tech-rune"><span>ServiceNow</span></div>
+                        <div class="tech-rune"><span>ITOM</span></div>
+                        <div class="tech-rune"><span>CMDB</span></div>
+                        <div class="tech-rune"><span>Angular</span></div>
+                        <div class="tech-rune"><span>TypeScript</span></div>
+                        <div class="tech-rune"><span>Java</span></div>
+                        <div class="tech-rune"><span>Spring Boot</span></div>
+                        <div class="tech-rune"><span>C# .NET</span></div>
+                        <div class="tech-rune"><span>Javascript</span></div>
+                        <div class="tech-rune"><span>Bash</span></div>
+                        <div class="tech-rune"><span>C++</span></div>
+                        <div class="tech-rune"><span>Python</span></div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-white text-xs font-bold uppercase mb-3 tracking-wider opacity-70">Data & Cloud</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tech-rune"><span>PostgreSQL</span></div>
+                        <div class="tech-rune"><span>Firebase</span></div>
+                        <div class="tech-rune"><span>SQL</span></div>
+                        <div class="tech-rune"><span>MYSQL</span></div>
+                        <div class="tech-rune"><span>Oracle</span></div>
+                        <div class="tech-rune"><span>Azure</span></div>
+                        <div class="tech-rune"><span>SAP</span></div>
+                        <div class="tech-rune"><span>OpenAI</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="mb-12">
+                <h3 class="text-electric-purple text-sm font-bold border-b border-[var(--electric-purple)] pb-2 mb-4 uppercase tracking-widest">Academy</h3>
+                <div class="mb-4">
+                    <h4 class="text-white font-bold">Computer Engineering</h4>
+                    <p class="text-gray-400 text-sm">INACAP, Santiago</p>
+                    <p class="text-electric-cyan text-xs">2006 - 2012</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold">Advanced Mathematics</h4>
+                    <p class="text-gray-400 text-sm">Pontificia Universidad Católica</p>
+                    <p class="text-electric-cyan text-xs">2002 (Scholarship)</p>
+                </div>
+            </section>
+
+        </aside>
+        
+        <!-- === MAIN CONTENT (RIGHT) === -->
+        <main class="main-col w-full md:w-2/3 p-8 lg:p-12 relative z-10">
+            
+            <!-- Abstract -->
+            <section class="mb-12">
+                <h2 class="text-3xl text-electric-cyan mb-4 flex items-center">
+                    <span class="text-electric-purple mr-3 text-2xl">❖</span> Professional Profile
+                </h2>
+                <div class="relative p-6 border border-[rgba(0,243,255,0.2)] bg-[rgba(0,0,0,0.3)] rounded-br-2xl">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--electric-cyan)] to-transparent opacity-50"></div>
+                    
+                    <p class="text-gray-300 leading-relaxed text-lg font-light skeleton-text" id="profile-text">
+                        Senior Full Stack Consultant and ServiceNow Solution Architect with over 15 years of experience transforming IT ecosystems in critical sectors such as banking and mining. Recognized as a TERA EXPERT by the global ServiceNow community, I specialize in the design and implementation of advanced ITSM solutions (Incident, Problem, Change Management) and the creation of custom applications. My profile combines expert backend (Java, Spring Boot) and frontend (Angular) mastery with a proven ability to integrate complex platforms such as Azure, SAP, SCCM, and monitoring tools. Specialist in process automation using AI and architecture modernization, focused on continuous improvement and business operational efficiency.
+                    </p>
+                </div>
+            </section>
+
+            <div class="energy-beam"></div>
+
+            <!-- Timeline -->
+            <section class="mb-12">
+                <h2 class="text-3xl text-electric-cyan mb-8">Mission Log</h2>
+                
+                <!-- Job 1 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">ServiceNow Consultant</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Lundin Mining (Feten Consulting)</span>
+                        <span class="text-electric-cyan text-xs font-mono border border-[var(--electric-cyan)] px-2 py-1 rounded bg-[rgba(0,243,255,0.1)]">Oct 2025</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-3 italic opacity-80">High-Level Consulting Demonstration</p>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>Implementation of data governance and advanced reporting</li>
+                        <li>Advanced scripting for SLAs and metric correction</li>
+                        <li>Advanced scripting for KPIs</li>
+                        <li>CMDB management: consolidation and loading of CIs</li>
+                        <li>Analysis and reporting of Lundin Mining intranet</li>
+                    </ul>
+                </div>
+                
+                <!-- Job 2 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Senior Process & Services Analyst, Development & Automation Lead</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Coasin Logicalis</span>
+                        <span class="text-electric-cyan text-xs font-mono">2022 - 2024</span>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
+                        Responsible for Automation and Development in a multi-domain environment as a Senior Services Process Analyst. I implemented innovative solutions to optimize the daily management of operations simultaneously affecting multiple clients.
+                    </p>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>Creator of SOLVER Chile system</li>
+                        <li>Automation of key operational processes, improving efficiency and reducing response times</li>
+                        <li>Development and implementation of a web portal in Angular integrated with ServiceNow</li>
+                        <li>Integrations with Azure and Microsoft Chatbot for communication optimization and automation</li>
+                        <li>Optimization of work order flows using Flow Designer</li>
+                        <li>Design of custom portals in Service Portal at client and cross-client level</li>
+                        <li>Development of custom widgets to improve user experience</li>
+                        <li>Customization of Agent application for asset reading via barcode</li>
+                        <li>Implementation of solutions with custom Script Includes</li>
+                        <li>Exploration of AI applications with OpenAI for continuous improvement</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Full Stack Developer</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">FIRWARE - ENTEL</span>
+                        <span class="text-electric-cyan text-xs font-mono">2021 - 2022</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>Comprehensive system for medical benefits management (JavaScript, Entity Framework C#, REST API)</li>
+                        <li>National vehicle fleet management system (JavaScript, SharePoint with custom libraries)</li>
+                        <li>Medical reimbursements module (JavaScript, SharePoint with custom libraries)</li>
+                    </ul>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Senior Consultant / ServiceNow Developer</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Axity</span>
+                        <span class="text-electric-cyan text-xs font-mono">2019 - 2021</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>BotFramework Webchat with ServiceNow for automation of AD and SAP password reset/unlock via REST API</li>
+                        <li>Integration between ServiceNow instances for incident module optimization</li>
+                        <li>Configuration and customization of Microsoft System Center SCCM for integration with ServiceNow</li>
+                        <li>Generation of custom reports in BMC Discovery and BMC Client Manager</li>
+                        <li>Configuration of Order Guides in ServiceNow for flow automation</li>
+                    </ul>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Management Tools Specialist</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">TIVIT</span>
+                        <span class="text-electric-cyan text-xs font-mono">2017 - 2019</span>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
+                        ServiceNow Developer (Jakarta, Kingston and London versions) for clients such as Embotelladora Andina and Masisa, developing self-service catalogs at national and international levels.
+                    </p>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>Development of responsive web portals in Service Portal and Angular</li>
+                        <li>Integration of Nagios with ServiceNow via REST API with Java</li>
+                        <li>Complete configuration for Altiris integration in ServiceNow</li>
+                        <li>Service automation through custom Scripts</li>
+                        <li>Development of custom widgets for Service Portal</li>
+                        <li>Implementation of Virtual Agents, Flow, dashboards and automation tools</li>
+                    </ul>
+                </div>
+
+                <!-- Job 6 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Application Development Analyst</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">Helpnet (outsourced to Synapsis TIVIT)</span>
+                        <span class="text-electric-cyan text-xs font-mono">2016 - 2017</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>BASEL project for DLL Financial Solutions Partner: application for file processing with parallel processing (Java JFrame + SQL Server 2008 R2)</li>
+                        <li>Reading Manager (ADMLEC) for Enel: system for transmitting measurement results through web services</li>
+                    </ul>
+                </div>
+
+                <!-- Job 7 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">IT Project Manager</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">DYTGROUP Chile</span>
+                        <span class="text-electric-cyan text-xs font-mono">2013 - 2016</span>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 skeleton-text">
+                        Process optimization for generating XBRL files for financial institutions (GNB, Bancamía, Bancolombia) according to requirements of the Superintendency of Securities and Insurance.
+                    </p>
+                </div>
+
+                <!-- Job 8 -->
+                <div class="mb-12 relative pl-8 border-l border-[rgba(0,243,255,0.3)]">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-2xl font-bold text-white">Application Development Analyst</h3>
+                    <div class="flex flex-wrap justify-between items-end mb-2">
+                        <span class="text-electric-purple text-sm uppercase tracking-wider font-bold">DYT System</span>
+                        <span class="text-electric-cyan text-xs font-mono">2010 - 2013</span>
+                    </div>
+                    <ul class="galactic-list text-gray-300 text-sm space-y-1 skeleton-text">
+                        <li>BBVA Bank - Corvus Notes: implementation of a global system for generating financial statements under IFRS (Java, Groovy & Grails, SQL Server 2008 R2)</li>
+                        <li>Metro Chile S.A.: development of Tótem systems, MAS machines, BICIMETRO Chile and SIGE (Visual Basic 6, Oracle DB, .NET 2005)</li>
+                        <li>Banmédica S.A.: correction of incidents in BanCobro system (Visual Basic 6, Oracle DB)</li>
+                        <li>Forum S.A.: maintenance and support of internal applications (Java, Oracle DB)</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <div class="energy-beam"></div>
+
+            <!-- Certifications and Badges -->
+            <section class="mb-12">
+                <h2 class="text-3xl text-electric-cyan mb-6">Credentials</h2>
+                
+                <div class="mb-6">
+                    <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-widest opacity-70">Official Certifications</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-galactic">SCRUM FOUNDATION PRO</span>
+                        <span class="badge-galactic">Scrum Learner 2025</span>
+                        <span class="badge-galactic">ITOM Optimization Specialist</span>
+                        <span class="badge-galactic">Google Cloud Computing</span>
+                        <span class="badge-galactic">Google App Development</span>
+                        <span class="badge-galactic">Oxford Machine Learning</span>
+                        <span class="badge-galactic">Google Activate - Cybersecurity in Teleworking</span>
+                        <span class="badge-galactic">Google Activate - Mobile App Development</span>
+                        <span class="badge-galactic">Google Learn Programming With JavaScript</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-widest opacity-70">ServiceNow Badges</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-galactic text-electric-cyan border-l-cyan">Agent Intelligence (2025)</span>
+                        <span class="badge-galactic">ServiceNow Fundamentals</span>
+                        <span class="badge-galactic">Service Catalog Overview</span>
+                        <span class="badge-galactic">Reporting Overview</span>
+                        <span class="badge-galactic">CMDB Configure</span>
+                        <span class="badge-galactic">Domain Separation</span>
+                        <span class="badge-galactic">Pre-Sales ITOM Optimization Specialization - Madrid</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="energy-beam"></div>
+
+            <!-- Multimedia -->
+            <section>
+                <h2 class="text-3xl text-electric-cyan mb-6">Transmission Files 🅟🅙🅜🅐 🅓🅔🅥🅔🅛🅞🅟🅔🅡</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://youtu.be/fIkRKEbrGLs?si=mqHrsmPJ8IKhti-Q" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Build Agent</h4>
+                                <p class="text-gray-500 text-xs">ServiceNow</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://youtu.be/HUYk9vdnx-U?si=Sr4aI5sHqlxb7eqt" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Gemini v.0.0.3 Virtual Agent</h4>
+                                <p class="text-gray-500 text-xs">ServiceNow ServicePortal</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://youtu.be/mley6mu4ID8?si=cH_hPNJQAiUcUHJA" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Incident Management</h4>
+                                <p class="text-gray-500 text-xs">Advanced Module</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://youtu.be/IXwDGb6dCHI?si=dcycetfyIwQgadJd" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Banking Management</h4>
+                                <p class="text-gray-500 text-xs">Operational Centralization</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://youtu.be/IYGzEcfpY44?si=tVSpjScU8J2s3pBR" target="_blank" class="group block p-4 border border-[rgba(188,19,254,0.3)] bg-[rgba(10,15,30,0.6)] hover:bg-[rgba(0,243,255,0.05)] transition-all relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,243,255,0.1)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="flex items-center relative z-10">
+                            <span class="text-3xl mr-3 text-red-500 group-hover:text-red-400 transition-colors">▶</span>
+                            <div>
+                                <h4 class="text-electric-cyan font-bold group-hover:text-white text-sm uppercase">Complex Systems</h4>
+                                <p class="text-gray-500 text-xs">Full Stack Architecture</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </main>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold tracking-widest uppercase mb-6">
-      <span>Architecture</span>
-      <span>•</span>
-      <span>ServiceNow</span>
-      <span>•</span>
-      <span>Full Stack</span>
-      <span>•</span>
-      <span>AI</span>
-    </div>
-
-    <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-      Patricio Javier Moya Antón
-    </h1>
-    <p class="text-xl md:text-2xl text-teal-400 font-medium mb-6">
-      Solution Architect | Senior Full Stack Consultant | ServiceNow Tera Expert
-    </p>
-
-    <p class="text-slate-400 max-w-3xl text-base md:text-lg leading-relaxed mb-8">
-      Solutions architect and senior consultant with more than 15 years building, integrating, and modernizing enterprise platforms across mining, banking, healthcare, telecommunications, transport, and financial services. Combining ServiceNow architecture with full-stack engineering, automation, data governance, UX, and artificial intelligence.
-    </p>
-
-    <div class="p-6 rounded-xl bg-gradient-to-r from-slate-900 to-slate-900/50 border-l-4 border-teal-400 max-w-3xl mb-10">
-      <p class="text-slate-200 font-medium italic">
-        "My profile combines deep technical development skills, architectural vision, operational judgment and the ability to turn complex processes into simple, auditable and scalable experiences."
-      </p>
-    </div>
-
-    <!-- Contact Bar -->
-    <div class="flex flex-wrap gap-4 text-sm text-slate-300 mb-14">
-      <span class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
-        📍 Santiago, Chile
-      </span>
-      <a href="mailto:patricio.moya.anton@gmail.com" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
-        ✉️ patricio.moya.anton@gmail.com
-      </a>
-      <a href="tel:+56952063997" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
-        📱 +56 9 5206 3997
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 hover:border-teal-500/50 transition">
-        🔗 ://linkedin.com
-      </a>
-    </div>
-
-    <!-- Key Metrics -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
-        <div class="text-3xl font-bold text-teal-400 mb-1">15+</div>
-        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Years of Experience</div>
-      </div>
-      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
-        <div class="text-3xl font-bold text-teal-400 mb-1">Tera</div>
-        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tera Expert ServiceNow</div>
-      </div>
-      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
-        <div class="text-3xl font-bold text-teal-400 mb-1">Full</div>
-        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Full Stack End-to-End</div>
-      </div>
-      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
-        <div class="text-3xl font-bold text-teal-400 mb-1">TI + OT</div>
-        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Business Vision</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects & Capabilities -->
-  <section id="capabilities" class="py-20 px-6 bg-slate-900/40 border-y border-slate-800/60">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Featured Projects & Capabilities</h2>
-      <p class="text-slate-400 mb-10">Core architectural domains and enterprise solutions delivered.</p>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">ServiceNow Enterprise Architecture</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            CSDM, CMDB, ITAM, ITOM, ITSM, catalogs, portals, automation, analytics, security and operational governance.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">Integration & Automation</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            REST/SOAP, SCCM, Nagios, Altiris, SAP, Azure, AD, Power BI, chatbots, integrations across instances and legacy systems.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">Full Stack Architecture</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Angular/TypeScript, Flutter, Java/Spring Boot, C#/.NET, Python, SQL and end-to-end enterprise product design.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">Data & Financial Systems</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            XBRL, XML, IFRS, GAAP, taxonomies, Oracle, SQL Server, parallel processing, reporting and regulatory traceability.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">User Experience</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Responsive portals, accessibility, corporate branding, notifications, visual guides, ES/EN localization and process simplification.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition">
-          <h3 class="text-lg font-semibold text-teal-400 mb-2">Technical Leadership</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Root cause diagnosis, standards design, mentoring, multidisciplinary coordination and executive communication oriented to decision making.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Professional Experience -->
-  <section id="experience" class="py-20 px-6 max-w-6xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Professional Experience</h2>
-    <p class="text-slate-400 mb-12">Track record leading architecture, governance, and development across major enterprises.</p>
-
-    <div class="space-y-10 border-l-2 border-slate-800 ml-3 pl-8 relative">
-
-      <!-- SQM -->
-      <div class="relative">
-        <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-teal-400 ring-4 ring-slate-950"></span>
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-          <span class="text-xs font-bold uppercase tracking-wider text-teal-400">SQM • Transformation & Technology Management</span>
-          <span class="text-xs px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/30 font-medium">Current Experience</span>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-3">Solutions Architect & Senior ServiceNow Consultant</h3>
+    <script>
+        // Loading simulation with skeleton
+        document.addEventListener('DOMContentLoaded', function() {
+            const skeletonElements = document.querySelectorAll('.skeleton-text');
+            
+            // Apply temporary skeleton effect
+            skeletonElements.forEach(element => {
+                element.style.minHeight = '20px';
+            });
+            
+            // Simulate content loading (in production it would be real)
+            setTimeout(() => {
+                skeletonElements.forEach(element => {
+                    element.classList.remove('skeleton-text');
+                });
+            }, 1500); // 1.5 seconds to simulate loading
+        });
+    </script>
+</body>
+</html>
